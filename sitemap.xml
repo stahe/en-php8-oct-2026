@@ -2,106 +2,106 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/index.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/en-php8-oct-2026/application-exercise---version-12.html</loc>
-         <lastmod>2026-10-02</lastmod>
-    </url>
-    <url>
-         <loc>https://stahe.github.io/en-php8-oct-2026/application-exercise---version-13.html</loc>
-         <lastmod>2026-10-02</lastmod>
-    </url>
-    <url>
-         <loc>https://stahe.github.io/en-php8-oct-2026/application-exercise---version-3.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <loc>https://stahe.github.io/en-php8-oct-2026/application-exercise---version-10.html</loc>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/application-exercise---version-4.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://stahe.github.io/en-php8-oct-2026/application-exercise---version-6.html</loc>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/application-exercise---versions-1-and-2.html</loc>
-         <lastmod>2026-10-02</lastmod>
-    </url>
-    <url>
-         <loc>https://stahe.github.io/en-php8-oct-2026/classes.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/conclusion.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/exceptions-and-errors.html</loc>
-         <lastmod>2026-10-02</lastmod>
-    </url>
-    <url>
-         <loc>https://stahe.github.io/en-php8-oct-2026/installing-a-working-environment.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/interfaces.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/introduction.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/layered-applications.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/network-functions.html</loc>
-         <lastmod>2026-10-02</lastmod>
-    </url>
-    <url>
-         <loc>https://stahe.github.io/en-php8-oct-2026/php-basics.html</loc>
-         <lastmod>2026-10-02</lastmod>
-    </url>
-    <url>
-         <loc>https://stahe.github.io/en-php8-oct-2026/practical-exercise---version-10.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/practical-exercise---version-11.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://stahe.github.io/en-php8-oct-2026/practical-exercise---version-12.html</loc>
+         <lastmod>2026-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://stahe.github.io/en-php8-oct-2026/practical-exercise---version-13.html</loc>
+         <lastmod>2026-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://stahe.github.io/en-php8-oct-2026/practical-exercise---version-3.html</loc>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/practical-exercise---version-5.html</loc>
-         <lastmod>2026-10-02</lastmod>
-    </url>
-    <url>
-         <loc>https://stahe.github.io/en-php8-oct-2026/practical-exercise---version-6.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/practical-exercise---version-7.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/practical-exercise---version-8.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/en-php8-oct-2026/practical-exercise---version-9.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <loc>https://stahe.github.io/en-php8-oct-2026/practice-exercise---version-9.html</loc>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/processing-xml-documents.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://stahe.github.io/en-php8-oct-2026/setting-up-a-development-environment.html</loc>
+         <lastmod>2026-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://stahe.github.io/en-php8-oct-2026/the-basics-of-php.html</loc>
+         <lastmod>2026-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://stahe.github.io/en-php8-oct-2026/the-classes.html</loc>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/traits.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/en-php8-oct-2026/using-the-mysql-dbms.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <loc>https://stahe.github.io/en-php8-oct-2026/using-sgbd-and-mysql.html</loc>
+         <lastmod>2026-10-03</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/en-php8-oct-2026/web-services.html</loc>
-         <lastmod>2026-10-02</lastmod>
+         <lastmod>2026-10-03</lastmod>
     </url>
 </urlset>
