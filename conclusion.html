@@ -600,14 +600,14 @@
   
   
     <li class="md-nav__item">
-      <a href="using-sgbd-and-mysql.html" class="md-nav__link">
+      <a href="using-the-mysql-dbms.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    12. Using SGBD and MySQL
+    12. Using the MySQL DBMS
   
 
     
@@ -1002,14 +1002,14 @@
 <p>This document has presented the PHP 8 language through numerous scripts and a common theme—the calculation of income tax—developed in 13 versions:</p>
 <ul>
 <li>Versions 1 and 2 implement the calculation using functions and text files or JSON;</li>
-<li>Version 3 writes it using classes, and Version 4 organizes it into layers <em>[dao]</em> / <em>[métier]</em> / <em>[console]</em>, tested with <em>[PHPUnit]</em>;</li>
+<li>Version 3 writes it using classes, and Version 4 organizes it into layers <em>[dao]</em> / <em>[business]</em> / <em>[console]</em>, tested with <em>[PHPUnit]</em>;</li>
 <li>versions 5 through 7 retrieve tax data from a database (<em>[MySQL]</em>), then <em>[PostgreSQL]</em>, and then from one or the other based on a simple configuration file;</li>
 <li>versions 8 through 11 convert the calculation into a web service, with a console client: authentication, sessions, logging, sending emails to the administrator, cache <em>[Redis]</em>, responses JSON and then XML;</li>
 <li>Version 12 is a web application (MVC) that can respond in JSON, XML, or HTML, with its console client;</li>
 <li>Version 13 protects the application files by making only the <em>[public]</em> folder visible from the web.</li>
 </ul>
-<p>Along the way, we’ve covered most of what PHP 8 offers compared to PHP 7: strict typing and the types of parameters, results, and attributes; read-only classes and attributes, constructor parameter promotion, enumerations, property brackets, and the asymmetric visibility of PHP 8.4; the <strong><em>[match]</em></strong> expression, the null-safe operator, named arguments, and the pipe operator from PHP 8.5; errors that have become exceptions; the new API, <em>[PDO],</em> and <em>[DOM]</em>. We have also seen, each time, what PHP has dropped: none of the scripts in this document display a <em>[Deprecated]</em> message with PHP 8.5.</p>
-<p>The server architecture of version 12 (a main controller, secondary controllers, the <em>[métier]</em> and <em>[dao]</em> layers, responses JSON, XML or HTML) is that of modern web frameworks, such as <em>[Symfony]</em> or <em>[Laravel]</em>, some of whose components we have, in fact, used (<em>[HttpFoundation]</em>, <em>[HttpClient]</em>, <em>[Mailer]</em>). Readers who have completed this course now have the foundation to tackle one of these frameworks.</p>
+<p>Along the way, we’ve covered most of what PHP 8 offers compared to PHP 7: strict typing and the types of parameters, results, and attributes; read-only classes and attributes, constructor parameter promotion, enumerations, property hooks, and the asymmetric visibility of PHP 8.4; the <strong><em>[match]</em></strong> expression, the null-safe operator, named arguments, and the pipe operator from PHP 8.5; errors that have become exceptions; the new API, <em>[PDO],</em> and <em>[DOM]</em>. We have also seen, each time, what PHP has dropped: none of the scripts in this document display a <em>[Deprecated]</em> message with PHP 8.5.</p>
+<p>The server architecture of version 12 (a main controller, secondary controllers, the <em>[business]</em> and <em>[dao]</em> layers, responses JSON, XML or HTML) is that of modern web frameworks, such as <em>[Symfony]</em> or <em>[Laravel]</em>, some of whose components we have, in fact, used (<em>[HttpFoundation]</em>, <em>[HttpClient]</em>, <em>[Mailer]</em>). Readers who have completed this course now have the foundation to tackle one of these frameworks.</p>
 <p>The JSON web service in version 12 can also have clients other than the console client written in PHP: a JavaScript client running in a browser, a mobile app, etc. This is the client/server architecture presented in the introduction to this document.</p>
 <p>Training courses for Serge Tahé are available at<a href="https://stahe.github.io/en-php8-oct-2026/index.html"><u><span style="color: #0563c1"> https://stahe.github.io</span></u></a>.</p>
 

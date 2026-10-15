@@ -602,14 +602,14 @@
   
   
     <li class="md-nav__item">
-      <a href="using-sgbd-and-mysql.html" class="md-nav__link">
+      <a href="using-the-mysql-dbms.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    12. Using SGBD and MySQL
+    12. Using the MySQL DBMS
   
 
     
@@ -927,10 +927,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#213-processing-with-the-new-api-dom-from-php-84" class="md-nav__link">
+  <a href="#213-processing-with-the-new-dom-api-from-php-84" class="md-nav__link">
     <span class="md-ellipsis">
       
-        21.3. Processing with the new API DOM from PHP 8.4
+        21.3. Processing with the new DOM API from PHP 8.4
       
     </span>
   </a>
@@ -1071,7 +1071,7 @@
 
 
 <h1 id="21-processing-xml-documents">21. <span style="color: #2e74b5">Processing XML Documents</span></h1>
-<p>The web services we have written so far exchange JSON data. The XML (eXtensible Markup Language) has long been the most widely used exchange format, and it is still commonly encountered: SOAP web services, RSS feeds, configuration files, office documents (a <em>[.odt]</em> or <em>[.docx]</em> file is an archive of XML files). PHP provides two API files for working with it:</p>
+<p>The web services we have written so far exchange JSON data. The XML (eXtensible Markup Language) has long been the most widely used exchange format, and it is still commonly encountered: SOAP web services, RSS feeds, configuration files, office documents (a <em>[.odt]</em> or <em>[.docx]</em> file is an archive of XML files). PHP provides two APIs for working with it:</p>
 <ul>
 <li><em>[SimpleXML]</em>: a very simple API, where the document elements become object properties;</li>
 <li><em>[DOM]</em> (Document Object Model): the standard API of W3C, which is more comprehensive and also allows you to modify a document. PHP 8.4 introduced a new version, in the <em>[Dom]</em> namespace, compliant with the current web standard.</li>
@@ -1109,34 +1109,34 @@
 <span class="normal"><a href="#__codelineno-1-20">20</a></span>
 <span class="normal"><a href="#__codelineno-1-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="nt">&lt;tribu&gt;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="nt">&lt;enseignant&gt;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">        </span><span class="nt">&lt;personne</span><span class="w"> </span><span class="na">sexe=</span><span class="s">"M"</span><span class="nt">&gt;</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">            </span><span class="nt">&lt;nom&gt;</span>dupont<span class="nt">&lt;/nom&gt;</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">            </span><span class="nt">&lt;prenom&gt;</span>jean<span class="nt">&lt;/prenom&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="nt">&lt;tribe&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="nt">&lt;teacher&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">        </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">gender=</span><span class="s">"M"</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">            </span><span class="nt">&lt;lastName&gt;</span>dupont<span class="nt">&lt;/lastName&gt;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">            </span><span class="nt">&lt;firstName&gt;</span>jean<span class="nt">&lt;/firstName&gt;</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">            </span><span class="nt">&lt;age&gt;</span>28<span class="nt">&lt;/age&gt;</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">            </span>ceci<span class="w"> </span>est<span class="w"> </span>un<span class="w"> </span>commentaire
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">        </span><span class="nt">&lt;/personne&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">            </span>this<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>comment
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">        </span><span class="nt">&lt;/person&gt;</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">        </span><span class="nt">&lt;section&gt;</span>27<span class="nt">&lt;/section&gt;</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="nt">&lt;/enseignant&gt;</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="nt">&lt;etudiant&gt;</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">        </span><span class="nt">&lt;personne</span><span class="w"> </span><span class="na">sexe=</span><span class="s">"F"</span><span class="nt">&gt;</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">            </span><span class="nt">&lt;nom&gt;</span>martin<span class="nt">&lt;/nom&gt;</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">            </span><span class="nt">&lt;prenom&gt;</span>charline<span class="nt">&lt;/prenom&gt;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="nt">&lt;/teacher&gt;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="nt">&lt;student&gt;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">        </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">gender=</span><span class="s">"F"</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">            </span><span class="nt">&lt;lastName&gt;</span>martin<span class="nt">&lt;/lastName&gt;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">            </span><span class="nt">&lt;firstName&gt;</span>charline<span class="nt">&lt;/firstName&gt;</span>
 <a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">            </span><span class="nt">&lt;age&gt;</span>22<span class="nt">&lt;/age&gt;</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">        </span><span class="nt">&lt;/personne&gt;</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">        </span><span class="nt">&lt;formation&gt;</span>dess<span class="w"> </span>IAIE<span class="nt">&lt;/formation&gt;</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">    </span><span class="nt">&lt;/etudiant&gt;</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="nt">&lt;/tribu&gt;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">        </span><span class="nt">&lt;/person&gt;</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">        </span><span class="nt">&lt;course&gt;</span>dess<span class="w"> </span>IAIE<span class="nt">&lt;/course&gt;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">    </span><span class="nt">&lt;/student&gt;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="nt">&lt;/tribe&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p>A XML document is a tree of elements:</p>
 <ul>
 <li>line 1: the prolog, which specifies the version of XML and the document’s character encoding;</li>
-<li>lines 3–21: the root element <em>[tribu]</em>. A XML document has exactly one root;</li>
-<li>lines 4–12: the <em>[enseignant]</em> element, a child of <em>[tribu]</em>. It has two children, <em>[personne]</em> and <em>[section]</em>;</li>
-<li>line 5: the element <em>[personne]</em> has an attribute <em>[sexe]</em> with a value of <em>[M]</em>;</li>
+<li>lines 3–21: the root element <em>[tribe]</em>. A XML document has exactly one root;</li>
+<li>lines 4–12: the <em>[teacher] element, a child of [tribe]</em>. It has two children, <em>[person] and [section]</em>;</li>
+<li>line 5: the element <em>[person] has an attribute [gender]</em> with a value of <em>[M]</em>;</li>
 <li>line 9: an element can contain both other elements and text;</li>
-<li>lines 13–20: the element <em>[etudiant]</em>, which has the same structure as <em>[enseignant]</em>.</li>
+<li>lines 13–20: the element <em>[student], which has the same structure as [teacher]</em>.</li>
 </ul>
 <h2 id="212-processing-with-simplexml">21.2. <span style="color: #2e74b5">Processing with SimpleXML</span></h2>
 <p>We analyze this document using the following <em>[simplexml-01.php]</em> script:</p>
@@ -1177,48 +1177,48 @@
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="c1">// the XML file to be processed</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="c1">// the XML file to be used</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="k">const</span> <span class="no">FILE_NAME</span> <span class="o">=</span> <span class="s2">"data.xml"</span><span class="p">;</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7"></a>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="c1">// Loading the document XML</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="c1">// loading the XML document</span>
 <a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="nv">$xml</span> <span class="o">=</span> <span class="nb">simplexml_load_file</span><span class="p">(</span><span class="nx">FILE_NAME</span><span class="p">);</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$xml</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a>    <span class="k">print</span> <span class="s2">"Le fichier ["</span> <span class="o">.</span> <span class="nx">FILE_NAME</span> <span class="o">.</span> <span class="s2">"] n'a pu être exploité</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>    <span class="k">print</span> <span class="s2">"The file ["</span> <span class="o">.</span> <span class="nx">FILE_NAME</span> <span class="o">.</span> <span class="s2">"] could not be used</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12"></a>    <span class="k">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="p">}</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="c1">// displaying the document</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="c1">// display of the document</span>
 <a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="nb">print_r</span><span class="p">(</span><span class="nv">$xml</span><span class="p">);</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="c1">// the teacher’s attribute [sexe]</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="nb">print_r</span><span class="p">(</span><span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">enseignant</span><span class="o">-&gt;</span><span class="na">personne</span><span class="p">[</span><span class="s1">'sexe'</span><span class="p">]);</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="c1">// element and attribute values, converted to strings</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="nv">$nom</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">enseignant</span><span class="o">-&gt;</span><span class="na">personne</span><span class="o">-&gt;</span><span class="na">nom</span><span class="p">;</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="k">print</span> <span class="s2">"nom=</span><span class="si">$nom</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="nv">$sexe</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">enseignant</span><span class="o">-&gt;</span><span class="na">personne</span><span class="p">[</span><span class="s1">'sexe'</span><span class="p">];</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="k">print</span> <span class="s2">"sexe=</span><span class="si">$sexe</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="nv">$formation</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">etudiant</span><span class="o">-&gt;</span><span class="na">formation</span><span class="p">;</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="k">print</span> <span class="s2">"formation=</span><span class="si">$formation</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="c1">// the [gender] attribute of the teaching person</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="nb">print_r</span><span class="p">(</span><span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">teacher</span><span class="o">-&gt;</span><span class="na">person</span><span class="p">[</span><span class="s1">'gender'</span><span class="p">]);</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="c1">// values of elements and attributes, converted to strings</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="nv">$lastName</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">teacher</span><span class="o">-&gt;</span><span class="na">person</span><span class="o">-&gt;</span><span class="na">lastName</span><span class="p">;</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="k">print</span> <span class="s2">"lastName=</span><span class="si">$lastName</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="nv">$gender</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">teacher</span><span class="o">-&gt;</span><span class="na">person</span><span class="p">[</span><span class="s1">'gender'</span><span class="p">];</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="k">print</span> <span class="s2">"gender=</span><span class="si">$gender</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="nv">$course</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">student</span><span class="o">-&gt;</span><span class="na">course</span><span class="p">;</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="k">print</span> <span class="s2">"course=</span><span class="si">$course</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="c1">// existence of an element</span>
-<a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="k">print</span> <span class="s2">"isset(nom)="</span> <span class="o">.</span> <span class="nb">var_export</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">enseignant</span><span class="o">-&gt;</span><span class="na">personne</span><span class="o">-&gt;</span><span class="na">nom</span><span class="p">),</span> <span class="k">true</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="k">print</span> <span class="s2">"isset(xx)="</span> <span class="o">.</span> <span class="nb">var_export</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">enseignant</span><span class="o">-&gt;</span><span class="na">personne</span><span class="o">-&gt;</span><span class="na">xx</span><span class="p">),</span> <span class="k">true</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="c1">// an integer conversion</span>
-<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="nv">$age</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">etudiant</span><span class="o">-&gt;</span><span class="na">personne</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">;</span>
-<a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="k">print</span> <span class="s2">"âge de l'étudiante=</span><span class="si">$age</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="c1">// iteration over all &lt;person&gt; elements in the document with XPath</span>
-<a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">xpath</span><span class="p">(</span><span class="s1">'//person'</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$personne</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-2-33" name="__codelineno-2-33"></a>    <span class="k">print</span> <span class="s2">"personne : </span><span class="si">{</span><span class="nv">$personne</span><span class="o">-&gt;</span><span class="na">prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="nv">$personne</span><span class="o">-&gt;</span><span class="na">nom</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nv">$personne</span><span class="p">[</span><span class="s1">'sexe'</span><span class="p">]</span><span class="si">}</span><span class="s2">)</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="k">print</span> <span class="s2">"isset(lastName)="</span> <span class="o">.</span> <span class="nb">var_export</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">teacher</span><span class="o">-&gt;</span><span class="na">person</span><span class="o">-&gt;</span><span class="na">lastName</span><span class="p">),</span> <span class="k">true</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="k">print</span> <span class="s2">"isset(xx)="</span> <span class="o">.</span> <span class="nb">var_export</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">teacher</span><span class="o">-&gt;</span><span class="na">person</span><span class="o">-&gt;</span><span class="na">xx</span><span class="p">),</span> <span class="k">true</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="c1">// a conversion to an integer</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="nv">$age</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">student</span><span class="o">-&gt;</span><span class="na">person</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">;</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="k">print</span> <span class="s2">"age of the student=</span><span class="si">$age</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="c1">// iterating over all the &lt;person&gt; elements of the document with XPath</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">xpath</span><span class="p">(</span><span class="s1">'//person'</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$person</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33"></a>    <span class="k">print</span> <span class="s2">"person: </span><span class="si">{</span><span class="nv">$person</span><span class="o">-&gt;</span><span class="na">firstName</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="nv">$person</span><span class="o">-&gt;</span><span class="na">lastName</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nv">$person</span><span class="p">[</span><span class="s1">'gender'</span><span class="p">]</span><span class="si">}</span><span class="s2">)</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <p>Comments</p>
 <ul>
 <li>line 6: The filename XML is a constant. The script is executed in its own folder, that of <em>[data.xml]</em>;</li>
-<li>Line 9: The <em>[simplexml_load_file]</em> function loads the document and returns an object of type <em>[SimpleXMLElement],</em> which represents the root element <em>[tribu]</em>. In the event of an error (missing file, malformed XML), it returns <strong><em>[false]</em></strong>, which we test on line 10;</li>
+<li>Line 9: The <em>[simplexml_load_file]</em> function loads the document and returns an object of type <em>[SimpleXMLElement],</em> which represents the root element <em>[tribe]</em>. In the event of an error (missing file, malformed XML), it returns <strong><em>[false]</em></strong>, which we test on line 10;</li>
 <li>line 15: display of the document. <em>[print_r]</em> shows how <em>[SimpleXML]</em> views the tree XML;</li>
-<li>line 17: child elements are accessed as properties (<strong><em>[$xml-&gt;enseignant-&gt;personne]</em></strong>), and attributes as array keys (<strong><em>[[&#x27;sexe&#x27;]]</em></strong>). Note that the root <em>[tribu]</em> does not appear in the code: <strong><em>[$xml]</em></strong> is already that element;</li>
-<li>line 19: <strong><em>[$xml-&gt;enseignant-&gt;personne-&gt;nom]</em></strong> is not a string but an object <em>[SimpleXMLElement]</em>. Converting <strong><em>[(string)]</em></strong> yields its text. With <strong><em>[declare(strict_types=1)]</em></strong>, it is best to perform this conversion explicitly before passing the value to a function that expects a string;</li>
-<li>Line 21: the value of the <em>[sexe]</em> attribute;</li>
+<li>line 17: child elements are accessed as properties (<strong><em>[$xml-&gt;teacher-&gt;person]</em></strong>), and attributes as array keys (<strong><em>[[&#x27;gender&#x27;]]</em></strong>). Note that the root [tribe] does not appear in the code: <strong><em>[$xml]</em></strong> is already that element;</li>
+<li>line 19: <strong><em>[$xml-&gt;teacher-&gt;person-&gt;lastName]</em></strong> is not a string but an object <em>[SimpleXMLElement]</em>. Converting <strong><em>[(string)]</em></strong> yields its text. With <strong><em>[declare(strict_types=1)]</em></strong>, it is best to perform this conversion explicitly before passing the value to a function that expects a string;</li>
+<li>Line 21: the value of the <em>[gender]</em> attribute;</li>
 <li>Lines 26–27: <em>[isset]</em> determines whether an element exists. The script PHP 7 displayed the Boolean result using <strong><em>[print]</em></strong>, which returns <em>[1]</em> for <strong><em>[true]</em></strong> and an empty string for <strong><em>[false]</em></strong>. We use <em>[var_export]</em>, which displays <em>[true]</em> or <em>[false]</em>;</li>
 <li>line 29: the conversion <strong><em>[(int)]</em></strong> returns the integer value of the element’s text;</li>
-<li>line 32: the method <em>[xpath]</em> evaluates an expression XPath. The expression <em>[//personne]</em> refers to all <em>[personne]</em> elements in the document, regardless of their level. This returns an array of <em>[SimpleXMLElement]</em>.</li>
+<li>line 32: the method <em>[xpath]</em> evaluates an expression XPath. The expression <em>[//person] refers to all [person] elements</em> in the document, regardless of their level. This returns an array of <em>[SimpleXMLElement]</em>.</li>
 </ul>
 <p>Console output</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
@@ -1273,38 +1273,38 @@
 <span class="normal"><a href="#__codelineno-3-50">50</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>&gt; php simplexml-01.php
 <a id="__codelineno-3-2" name="__codelineno-3-2"></a>SimpleXMLElement Object
 <a id="__codelineno-3-3" name="__codelineno-3-3"></a>(
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>    [enseignant] =&gt; SimpleXMLElement Object
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>    [teacher] =&gt; SimpleXMLElement Object
 <a id="__codelineno-3-5" name="__codelineno-3-5"></a>        (
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a>            [personne] =&gt; SimpleXMLElement Object
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>            [person] =&gt; SimpleXMLElement Object
 <a id="__codelineno-3-7" name="__codelineno-3-7"></a>                (
 <a id="__codelineno-3-8" name="__codelineno-3-8"></a>                    [@attributes] =&gt; Array
 <a id="__codelineno-3-9" name="__codelineno-3-9"></a>                        (
-<a id="__codelineno-3-10" name="__codelineno-3-10"></a>                            [sexe] =&gt; M
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>                            [gender] =&gt; M
 <a id="__codelineno-3-11" name="__codelineno-3-11"></a>                        )
 <a id="__codelineno-3-12" name="__codelineno-3-12"></a>
-<a id="__codelineno-3-13" name="__codelineno-3-13"></a>                    [nom] =&gt; dupont
-<a id="__codelineno-3-14" name="__codelineno-3-14"></a>                    [prenom] =&gt; jean
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a>                    [lastName] =&gt; dupont
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>                    [firstName] =&gt; jean
 <a id="__codelineno-3-15" name="__codelineno-3-15"></a>                    [age] =&gt; 28
 <a id="__codelineno-3-16" name="__codelineno-3-16"></a>                )
 <a id="__codelineno-3-17" name="__codelineno-3-17"></a>
 <a id="__codelineno-3-18" name="__codelineno-3-18"></a>            [section] =&gt; 27
 <a id="__codelineno-3-19" name="__codelineno-3-19"></a>        )
 <a id="__codelineno-3-20" name="__codelineno-3-20"></a>
-<a id="__codelineno-3-21" name="__codelineno-3-21"></a>    [etudiant] =&gt; SimpleXMLElement Object
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a>    [student] =&gt; SimpleXMLElement Object
 <a id="__codelineno-3-22" name="__codelineno-3-22"></a>        (
-<a id="__codelineno-3-23" name="__codelineno-3-23"></a>            [personne] =&gt; SimpleXMLElement Object
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a>            [person] =&gt; SimpleXMLElement Object
 <a id="__codelineno-3-24" name="__codelineno-3-24"></a>                (
 <a id="__codelineno-3-25" name="__codelineno-3-25"></a>                    [@attributes] =&gt; Array
 <a id="__codelineno-3-26" name="__codelineno-3-26"></a>                        (
-<a id="__codelineno-3-27" name="__codelineno-3-27"></a>                            [sexe] =&gt; F
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a>                            [gender] =&gt; F
 <a id="__codelineno-3-28" name="__codelineno-3-28"></a>                        )
 <a id="__codelineno-3-29" name="__codelineno-3-29"></a>
-<a id="__codelineno-3-30" name="__codelineno-3-30"></a>                    [nom] =&gt; martin
-<a id="__codelineno-3-31" name="__codelineno-3-31"></a>                    [prenom] =&gt; charline
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a>                    [lastName] =&gt; martin
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a>                    [firstName] =&gt; charline
 <a id="__codelineno-3-32" name="__codelineno-3-32"></a>                    [age] =&gt; 22
 <a id="__codelineno-3-33" name="__codelineno-3-33"></a>                )
 <a id="__codelineno-3-34" name="__codelineno-3-34"></a>
-<a id="__codelineno-3-35" name="__codelineno-3-35"></a>            [formation] =&gt; dess IAIE
+<a id="__codelineno-3-35" name="__codelineno-3-35"></a>            [course] =&gt; dess IAIE
 <a id="__codelineno-3-36" name="__codelineno-3-36"></a>        )
 <a id="__codelineno-3-37" name="__codelineno-3-37"></a>
 <a id="__codelineno-3-38" name="__codelineno-3-38"></a>)
@@ -1312,23 +1312,23 @@
 <a id="__codelineno-3-40" name="__codelineno-3-40"></a>(
 <a id="__codelineno-3-41" name="__codelineno-3-41"></a>    [0] =&gt; M
 <a id="__codelineno-3-42" name="__codelineno-3-42"></a>)
-<a id="__codelineno-3-43" name="__codelineno-3-43"></a>nom=dupont
-<a id="__codelineno-3-44" name="__codelineno-3-44"></a>sexe=M
-<a id="__codelineno-3-45" name="__codelineno-3-45"></a>formation=dess IAIE
-<a id="__codelineno-3-46" name="__codelineno-3-46"></a>isset(nom)=true
+<a id="__codelineno-3-43" name="__codelineno-3-43"></a>lastName=dupont
+<a id="__codelineno-3-44" name="__codelineno-3-44"></a>gender=M
+<a id="__codelineno-3-45" name="__codelineno-3-45"></a>course=dess IAIE
+<a id="__codelineno-3-46" name="__codelineno-3-46"></a>isset(lastName)=true
 <a id="__codelineno-3-47" name="__codelineno-3-47"></a>isset(xx)=false
-<a id="__codelineno-3-48" name="__codelineno-3-48"></a>âge de l'étudiante=22
-<a id="__codelineno-3-49" name="__codelineno-3-49"></a>personne : jean dupont (M)
-<a id="__codelineno-3-50" name="__codelineno-3-50"></a>personne : charline martin (F)
+<a id="__codelineno-3-48" name="__codelineno-3-48"></a>age of the student=22
+<a id="__codelineno-3-49" name="__codelineno-3-49"></a>person: jean dupont (M)
+<a id="__codelineno-3-50" name="__codelineno-3-50"></a>person: charline martin (F)
 </code></pre></div></td></tr></table></div>
 <ul>
-<li>Lines 2–38: the document XML in the form of a <em>[SimpleXMLElement]</em> object. Note that the text <em>[ceci est un commentaire]</em> does not appear: <em>[print_r]</em> shows only the elements and attributes;</li>
+<li>Lines 2–38: the document XML in the form of a <em>[SimpleXMLElement]</em> object. Note that the text <em>[this is a comment]</em> does not appear: <em>[print_r]</em> shows only the elements and attributes;</li>
 <li>lines 39–42: an attribute is also a <em>[SimpleXMLElement]</em> object;</li>
 <li>lines 43–48: the values read from the document;</li>
 <li>lines 49–50: the XPath traversal of the two people.</li>
 </ul>
-<h2 id="213-processing-with-the-new-api-dom-from-php-84">21.3. <span style="color: #2e74b5">Processing with the new API DOM from PHP 8.4</span></h2>
-<p>Starting with PHP 8.4, the <em>[Dom]</em> namespace offers a new API and DOM: the <em>[Dom\XMLDocument]</em> class for XML documents and the <em>[Dom\HTMLDocument]</em> class for HTML5 documents. It is a better replacement for the old <em>[DOMDocument]</em> class (which is still available): it complies with the current DOM standard and provides the <em>[querySelector]</em> and <em>[querySelectorAll]</em> methods familiar to JavaScript developers. These methods allow you to search for elements using CSS selectors.</p>
+<h2 id="213-processing-with-the-new-dom-api-from-php-84">21.3. <span style="color: #2e74b5">Processing with the new DOM API from PHP 8.4</span></h2>
+<p>Starting with PHP 8.4, the <em>[Dom]</em> namespace offers a new DOM API: the <em>[Dom\XMLDocument]</em> class for XML documents and the <em>[Dom\HTMLDocument]</em> class for HTML5 documents. It is a better replacement for the old <em>[DOMDocument]</em> class (which is still available): it complies with the current DOM standard and provides the <em>[querySelector]</em> and <em>[querySelectorAll]</em> methods familiar to JavaScript developers. These methods allow you to search for elements using CSS selectors.</p>
 <p>The <em>[dom-01.php]</em> script uses the same document:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
@@ -1372,53 +1372,53 @@
 <a id="__codelineno-4-2" name="__codelineno-4-2"></a>
 <a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4"></a>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c1">// the same document processed using the new API DOM from PHP 8.4</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c1">// the same document used with the new DOM API of PHP 8.4</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6"></a>
 <a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="k">use</span> <span class="nx">Dom\XMLDocument</span><span class="p">;</span>
 <a id="__codelineno-4-8" name="__codelineno-4-8"></a>
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="c1">// the XML file to be processed</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="c1">// the XML file to be used</span>
 <a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="k">const</span> <span class="no">FILE_NAME</span> <span class="o">=</span> <span class="s2">"data.xml"</span><span class="p">;</span>
 <a id="__codelineno-4-11" name="__codelineno-4-11"></a>
 <a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="k">try</span> <span class="p">{</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13"></a>     <span class="c1">// Loading the XML document</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a>    <span class="c1">// loading the XML document</span>
 <a id="__codelineno-4-14" name="__codelineno-4-14"></a>    <span class="nv">$document</span> <span class="o">=</span> <span class="nx">XMLDocument</span><span class="o">::</span><span class="na">createFromFile</span><span class="p">(</span><span class="nx">FILE_NAME</span><span class="p">);</span>
 <a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Throwable</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16"></a>    <span class="k">print</span> <span class="s2">"Le fichier ["</span> <span class="o">.</span> <span class="nx">FILE_NAME</span> <span class="o">.</span> <span class="s2">"] n'a pu être exploité : </span><span class="si">{</span><span class="nv">$ex</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a>    <span class="k">print</span> <span class="s2">"The file ["</span> <span class="o">.</span> <span class="nx">FILE_NAME</span> <span class="o">.</span> <span class="s2">"] could not be used: </span><span class="si">{</span><span class="nv">$ex</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <a id="__codelineno-4-17" name="__codelineno-4-17"></a>    <span class="k">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="p">}</span>
 <a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="c1">// the root element</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="k">print</span> <span class="s2">"racine="</span> <span class="o">.</span> <span class="nv">$document</span><span class="o">-&gt;</span><span class="na">documentElement</span><span class="o">-&gt;</span><span class="na">tagName</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="c1">// the first teacher, found using the selector CSS</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="nv">$personne</span> <span class="o">=</span> <span class="nv">$document</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'enseignant &gt; personne'</span><span class="p">);</span>
-<a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="k">print</span> <span class="s2">"nom="</span> <span class="o">.</span> <span class="nv">$personne</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'nom'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">textContent</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="k">print</span> <span class="s2">"sexe="</span> <span class="o">.</span> <span class="nv">$personne</span><span class="o">-&gt;</span><span class="na">getAttribute</span><span class="p">(</span><span class="s1">'sexe'</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="k">print</span> <span class="s2">"formation="</span> <span class="o">.</span> <span class="nv">$document</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'etudiant &gt; formation'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">textContent</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="k">print</span> <span class="s2">"root="</span> <span class="o">.</span> <span class="nv">$document</span><span class="o">-&gt;</span><span class="na">documentElement</span><span class="o">-&gt;</span><span class="na">tagName</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="c1">// the 1st teaching person, found with a CSS selector</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="nv">$person</span> <span class="o">=</span> <span class="nv">$document</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'teacher &gt; person'</span><span class="p">);</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="k">print</span> <span class="s2">"lastName="</span> <span class="o">.</span> <span class="nv">$person</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'lastName'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">textContent</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="k">print</span> <span class="s2">"gender="</span> <span class="o">.</span> <span class="nv">$person</span><span class="o">-&gt;</span><span class="na">getAttribute</span><span class="p">(</span><span class="s1">'gender'</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="k">print</span> <span class="s2">"course="</span> <span class="o">.</span> <span class="nv">$document</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'student &gt; course'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">textContent</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <a id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="c1">// a missing element: querySelector returns null</span>
-<a id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="k">print</span> <span class="s2">"xx existe="</span> <span class="o">.</span> <span class="nb">var_export</span><span class="p">(</span><span class="nv">$personne</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'xx'</span><span class="p">)</span> <span class="o">!==</span> <span class="k">null</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<a id="__codelineno-4-28" name="__codelineno-4-28"></a><span class="c1">// all people in the document</span>
-<a id="__codelineno-4-29" name="__codelineno-4-29"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$document</span><span class="o">-&gt;</span><span class="na">querySelectorAll</span><span class="p">(</span><span class="s1">'personne'</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$personne</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-4-30" name="__codelineno-4-30"></a>     <span class="c1">// the null-safe operator ?-&gt; protects against a missing element</span>
-<a id="__codelineno-4-31" name="__codelineno-4-31"></a>    <span class="nv">$prénom</span> <span class="o">=</span> <span class="nv">$personne</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'prenom'</span><span class="p">)</span><span class="o">?-&gt;</span><span class="na">textContent</span> <span class="o">??</span> <span class="s1">'?'</span><span class="p">;</span>
-<a id="__codelineno-4-32" name="__codelineno-4-32"></a>    <span class="nv">$nom</span> <span class="o">=</span> <span class="nv">$personne</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'nom'</span><span class="p">)</span><span class="o">?-&gt;</span><span class="na">textContent</span> <span class="o">??</span> <span class="s1">'?'</span><span class="p">;</span>
-<a id="__codelineno-4-33" name="__codelineno-4-33"></a>    <span class="k">print</span> <span class="s2">"personne : </span><span class="si">$prénom</span><span class="s2"> </span><span class="si">$nom</span><span class="s2"> (</span><span class="si">{</span><span class="nv">$personne</span><span class="o">-&gt;</span><span class="na">getAttribute</span><span class="p">(</span><span class="s1">'sexe'</span><span class="p">)</span><span class="si">}</span><span class="s2">)</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="k">print</span> <span class="s2">"xx exists="</span> <span class="o">.</span> <span class="nb">var_export</span><span class="p">(</span><span class="nv">$person</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'xx'</span><span class="p">)</span> <span class="o">!==</span> <span class="k">null</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28"></a><span class="c1">// all the persons of the document</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$document</span><span class="o">-&gt;</span><span class="na">querySelectorAll</span><span class="p">(</span><span class="s1">'person'</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$person</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30"></a>    <span class="c1">// the nullsafe operator ?-&gt; protects against a missing element</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31"></a>    <span class="nv">$firstName</span> <span class="o">=</span> <span class="nv">$person</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'firstName'</span><span class="p">)</span><span class="o">?-&gt;</span><span class="na">textContent</span> <span class="o">??</span> <span class="s1">'?'</span><span class="p">;</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32"></a>    <span class="nv">$lastName</span> <span class="o">=</span> <span class="nv">$person</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'lastName'</span><span class="p">)</span><span class="o">?-&gt;</span><span class="na">textContent</span> <span class="o">??</span> <span class="s1">'?'</span><span class="p">;</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33"></a>    <span class="k">print</span> <span class="s2">"person: </span><span class="si">$firstName</span><span class="s2"> </span><span class="si">$lastName</span><span class="s2"> (</span><span class="si">{</span><span class="nv">$person</span><span class="o">-&gt;</span><span class="na">getAttribute</span><span class="p">(</span><span class="s1">'gender'</span><span class="p">)</span><span class="si">}</span><span class="s2">)</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <a id="__codelineno-4-34" name="__codelineno-4-34"></a><span class="p">}</span>
-<a id="__codelineno-4-35" name="__codelineno-4-35"></a><span class="c1">// document modification: the content of the &lt;section&gt; element for the teacher is changed</span>
-<a id="__codelineno-4-36" name="__codelineno-4-36"></a><span class="nv">$section</span> <span class="o">=</span> <span class="nv">$document</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'enseignant &gt; section'</span><span class="p">);</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35"></a><span class="c1">// modifying the document: we change the content of the teacher's &lt;section&gt; element</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36"></a><span class="nv">$section</span> <span class="o">=</span> <span class="nv">$document</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'teacher &gt; section'</span><span class="p">);</span>
 <a id="__codelineno-4-37" name="__codelineno-4-37"></a><span class="nv">$section</span><span class="o">-&gt;</span><span class="na">textContent</span> <span class="o">=</span> <span class="s2">"26"</span><span class="p">;</span>
-<a id="__codelineno-4-38" name="__codelineno-4-38"></a><span class="c1">// the modified document, as text XML</span>
-<a id="__codelineno-4-39" name="__codelineno-4-39"></a><span class="k">print</span> <span class="nv">$document</span><span class="o">-&gt;</span><span class="na">saveXml</span><span class="p">(</span><span class="nv">$document</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'enseignant'</span><span class="p">))</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38"></a><span class="c1">// the modified document, as XML text</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39"></a><span class="k">print</span> <span class="nv">$document</span><span class="o">-&gt;</span><span class="na">saveXml</span><span class="p">(</span><span class="nv">$document</span><span class="o">-&gt;</span><span class="na">querySelector</span><span class="p">(</span><span class="s1">'teacher'</span><span class="p">))</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 </code></pre></div></td></tr></table></div>
 <p>Comments</p>
 <ul>
 <li>line 7: the <em>[XMLDocument]</em> class in the <em>[Dom]</em> namespace;</li>
 <li>Line 14: The static method <em>[createFromFile]</em> loads the document. Unlike <em>[simplexml_load_file]</em>, it throws an exception if an error occurs;</li>
 <li>line 20: the property <em>[documentElement]</em> is the root element; <em>[tagName]</em> is its name;</li>
-<li>line 22: the selector CSS <em>[enseignant &gt; personne]</em> refers to an element <em>[personne] that is</em> a direct child of an element <em>[enseignant]</em>. <em>[querySelector]</em> returns the first matching element, or <strong><em>[null]</em></strong> if there are none;</li>
+<li>line 22: the selector CSS <em>[teacher &gt; person] refers to an element [person] that is a direct child of an element [teacher]</em>. <em>[querySelector]</em> returns the first matching element, or <strong><em>[null]</em></strong> if there are none;</li>
 <li>line 23: the <em>[textContent]</em> property is the text contained in the element;</li>
 <li>line 24: the value of an attribute;</li>
 <li>line 27: a missing element returns <strong><em>[null]</em></strong>;</li>
-<li>line 29: all <em>[personne]</em> elements in the document;</li>
-<li>Line 31: If the element <em>[prenom]</em> were missing, <strong><em>[querySelector(&#x27;prenom&#x27;)]</em></strong> would result in <strong><em>[null]</em></strong>. The null-safe operator <strong><em>[?-&gt;]</em></strong> (PHP 8.0) then returns <strong><em>[null]</em></strong> instead of causing an error, and the operator <strong><em>[??]</em></strong> replaces this <strong><em>[null]</em></strong> with <strong><em>[&#x27;?&#x27;]</em></strong>;</li>
+<li>line 29: all <em>[person]</em> elements in the document;</li>
+<li>Line 31: If the element <em>[firstName] were missing, [querySelector(&#x27;firstName&#x27;)]</em> would result in <strong><em>[null]</em></strong>. The null-safe operator <strong><em>[?-&gt;]</em></strong> (PHP 8.0) then returns <strong><em>[null]</em></strong> instead of causing an error, and the operator <strong><em>[??]</em></strong> replaces this <strong><em>[null]</em></strong> with <strong><em>[&#x27;?&#x27;]</em></strong>;</li>
 <li>line 37: the API DOM also allows the document to be modified: here, the text of the <em>[section]</em> element is changed;</li>
 <li>line 39: <em>[saveXml]</em> returns the text XML from the document, or from one of its elements if it is passed as a parameter.</li>
 </ul>
@@ -1440,22 +1440,22 @@
 <span class="normal"><a href="#__codelineno-5-15">15</a></span>
 <span class="normal"><a href="#__codelineno-5-16">16</a></span>
 <span class="normal"><a href="#__codelineno-5-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>&gt; php dom-01.php
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a>racine=tribu
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a>nom=dupont
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a>sexe=M
-<a id="__codelineno-5-5" name="__codelineno-5-5"></a>formation=dess IAIE
-<a id="__codelineno-5-6" name="__codelineno-5-6"></a>xx existe=false
-<a id="__codelineno-5-7" name="__codelineno-5-7"></a>personne : jean dupont (M)
-<a id="__codelineno-5-8" name="__codelineno-5-8"></a>personne : charline martin (F)
-<a id="__codelineno-5-9" name="__codelineno-5-9"></a>&lt;enseignant&gt;
-<a id="__codelineno-5-10" name="__codelineno-5-10"></a>        &lt;personne sexe="M"&gt;
-<a id="__codelineno-5-11" name="__codelineno-5-11"></a>            &lt;nom&gt;dupont&lt;/nom&gt;
-<a id="__codelineno-5-12" name="__codelineno-5-12"></a>            &lt;prenom&gt;jean&lt;/prenom&gt;
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>root=tribe
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>lastName=dupont
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>gender=M
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>course=dess IAIE
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>xx exists=false
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>person: jean dupont (M)
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>person: charline martin (F)
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>&lt;teacher&gt;
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>        &lt;person gender="M"&gt;
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a>            &lt;lastName&gt;dupont&lt;/lastName&gt;
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a>            &lt;firstName&gt;jean&lt;/firstName&gt;
 <a id="__codelineno-5-13" name="__codelineno-5-13"></a>            &lt;age&gt;28&lt;/age&gt;
-<a id="__codelineno-5-14" name="__codelineno-5-14"></a>            ceci est un commentaire
-<a id="__codelineno-5-15" name="__codelineno-5-15"></a>        &lt;/personne&gt;
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a>            this is a comment
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a>        &lt;/person&gt;
 <a id="__codelineno-5-16" name="__codelineno-5-16"></a>        &lt;section&gt;26&lt;/section&gt;
-<a id="__codelineno-5-17" name="__codelineno-5-17"></a>    &lt;/enseignant&gt;
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a>    &lt;/teacher&gt;
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>line 16: the modification made by the script.</li>

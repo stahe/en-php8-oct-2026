@@ -602,14 +602,14 @@
   
   
     <li class="md-nav__item">
-      <a href="using-sgbd-and-mysql.html" class="md-nav__link">
+      <a href="using-the-mysql-dbms.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    12. Using SGBD and MySQL
+    12. Using the MySQL DBMS
   
 
     
@@ -1151,7 +1151,7 @@
 <h1 id="24-practical-exercise-version-13">24. <span style="color: #2e74b5">Practical Exercise – Version 13</span></h1>
 <p>Version 13 introduces few changes: it secures access to the application’s files. It adds no new features: the actions, the responses JSON, XML, and HTML, and the views are the same as in version 12. What has changed is the file structure on the disk and the configuration of the <em>[Apache]</em> server.</p>
 <h2 id="241-the-problem">24.1. <span style="color: #2e74b5">The Problem</span></h2>
-<p>In Course PHP 7, you could request the URL configuration file from Version 12, and the browser would display it. However, this <em>[config.json]</em> file contains sensitive information, such as the credentials of users authorized to use the application. It must not be accessible to users.</p>
+<p>In Course PHP 7, you could request the URL of the version 12 configuration file, and the browser would display it. However, this <em>[config.json]</em> file contains sensitive information, such as the credentials of users authorized to use the application. It must not be accessible to users.</p>
 <p>In our version 12, this file is already protected: it is located in the <em>[Data]</em> folder, to which the <em>[.htaccess]</em> file—introduced with version 8—denies access (<strong><em>[Require all denied]</em></strong> directive). However, this protection is applied on a case-by-case basis: we block only what we’ve specifically chosen to block, and everything else is served. Yet there are still many things that should not be displayed. For example, the browser may request a view directly, without going through the main controller:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -1170,26 +1170,26 @@
 <span class="normal"><a href="#__codelineno-0-15">15</a></span>
 <span class="normal"><a href="#__codelineno-0-16">16</a></span>
 <span class="normal"><a href="#__codelineno-0-17">17</a></span>
-<span class="normal"><a href="#__codelineno-0-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>&gt; curl -i http://localhost/php8-oct-2026/scripts-web/impots/version-12/Views/vue-calcul-impot.php
+<span class="normal"><a href="#__codelineno-0-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>&gt; curl -i http://localhost/php8-oct-2026/scripts-web/tax/version-12/Views/view-tax-calculation.php
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a>HTTP/1.1 200 OK
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a>Server: Apache/2.4.58
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a>X-Powered-By: PHP/8.5.11
 <a id="__codelineno-0-5" name="__codelineno-0-5"></a>Vary: Accept-Encoding
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a>Content-Length: 1011
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>Content-Length: 1017
 <a id="__codelineno-0-7" name="__codelineno-0-7"></a>Content-Type: text/html; charset=UTF-8
 <a id="__codelineno-0-8" name="__codelineno-0-8"></a>
 <a id="__codelineno-0-9" name="__codelineno-0-9"></a>&lt;br /&gt;
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $request in &lt;b&gt;.../php8-oct-2026/scripts-web/impots/version-12/Views/vue-calcul-impot.php&lt;/b&gt; on line &lt;b&gt;9&lt;/b&gt;&lt;br /&gt;
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $request in &lt;b&gt;.../php8-oct-2026/scripts-web/tax/version-12/Views/view-tax-calculation.php&lt;/b&gt; on line &lt;b&gt;9&lt;/b&gt;&lt;br /&gt;
 <a id="__codelineno-0-11" name="__codelineno-0-11"></a>&lt;br /&gt;
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a>&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $content in &lt;b&gt;.../php8-oct-2026/scripts-web/impots/version-12/Views/vue-calcul-impot.php&lt;/b&gt; on line &lt;b&gt;9&lt;/b&gt;&lt;br /&gt;
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $content in &lt;b&gt;.../php8-oct-2026/scripts-web/tax/version-12/Views/view-tax-calculation.php&lt;/b&gt; on line &lt;b&gt;9&lt;/b&gt;&lt;br /&gt;
 <a id="__codelineno-0-13" name="__codelineno-0-13"></a>&lt;br /&gt;
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a>&lt;b&gt;Fatal error&lt;/b&gt;:  Uncaught TypeError: getModelForThisView(): Argument #1 ($request) must be of type Symfony\Component\HttpFoundation\Request; null was provided; called in .../php8-oct-2026/scripts-web/impots/version-12/Views/vue-calcul-impot.php on line 9 and defined in .../php8-oct-2026/scripts-web/impots/version-12/Views/vue-calcul-impot.php:11
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>&lt;b&gt;Fatal error&lt;/b&gt;:  Uncaught TypeError: getModelForThisView(): Argument #1 ($request) must be of type Symfony\Component\HttpFoundation\Request, null given, called in .../php8-oct-2026/scripts-web/tax/version-12/Views/view-tax-calculation.php on line 9 and defined in .../php8-oct-2026/scripts-web/tax/version-12/Views/view-tax-calculation.php:11
 <a id="__codelineno-0-15" name="__codelineno-0-15"></a>Stack trace:
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a>#0 .../php8-oct-2026/scripts-web/impots/version-12/Views/vue-calcul-impot.php(9): getModelForThisView(NULL, NULL)
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>#0 .../php8-oct-2026/scripts-web/tax/version-12/Views/view-tax-calculation.php(9): getModelForThisView(NULL, NULL)
 <a id="__codelineno-0-17" name="__codelineno-0-17"></a>#1 {main}
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a>  thrown in &lt;b&gt;.../php8-oct-2026/scripts-web/impots/version-12/Views/vue-calcul-impot.php&lt;/b&gt; on line &lt;b&gt;11&lt;/b&gt;&lt;br /&gt;
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>  thrown in &lt;b&gt;.../php8-oct-2026/scripts-web/tax/version-12/Views/view-tax-calculation.php&lt;/b&gt; on line &lt;b&gt;11&lt;/b&gt;&lt;br /&gt;
 </code></pre></div></td></tr></table></div>
-<p>The view is executed out of context: the variables normally provided by the <em>[HtmlResponse]</em> class do not exist. Since <em>[Laragon]</em> is configured for development (directive <strong><em>[display_errors=On]</em></strong> from PHP), error messages are sent to the browser. They reveal the file paths on the server, as well as the names of the functions and classes used—all of which is useful information for anyone seeking to attack the application. Secondary controllers, response classes, and the classes in the <em>[métier]</em> and <em>[dao]</em> layers can likewise be executed by a simple URL. Here, they merely define a class, but there is no guarantee that this will always be the case.</p>
+<p>The view is executed out of context: the variables normally provided by the <em>[HtmlResponse]</em> class do not exist. Since <em>[Laragon]</em> is configured for development (directive <strong><em>[display_errors=On]</em></strong> from PHP), error messages are sent to the browser. They reveal the file paths on the server, as well as the names of the functions and classes used—all of which is useful information for anyone seeking to attack the application. Secondary controllers, response classes, and the classes in the <em>[business]</em> and <em>[dao]</em> layers can likewise be executed by a simple URL. Here, they merely define a class, but there is no guarantee that this will always be the case.</p>
 <p>More seriously: the entire <em>[php8-oct-2026]</em> folder for the course is located inside the <em>[www]</em> folder of <em>[Laragon]</em>. The console script files are also accessible via the web, even though no one thought to protect them:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
@@ -1220,38 +1220,38 @@
 <span class="normal"><a href="#__codelineno-1-27">27</a></span>
 <span class="normal"><a href="#__codelineno-1-28">28</a></span>
 <span class="normal"><a href="#__codelineno-1-29">29</a></span>
-<span class="normal"><a href="#__codelineno-1-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>&gt; curl -i http://localhost/php8-oct-2026/scripts-console/impots/version-05/Data/database.json
+<span class="normal"><a href="#__codelineno-1-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>&gt; curl -i http://localhost/php8-oct-2026/scripts-console/tax/version-05/Data/database.json
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a>HTTP/1.1 200 OK
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a>Server: Apache/2.4.58
 <a id="__codelineno-1-4" name="__codelineno-1-4"></a>Last-Modified: Thu, 01 Oct 2026 15:46:08 GMT
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>ETag: "3c6-65cc950791217"
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>ETag: "39f-65cc950791217"
 <a id="__codelineno-1-6" name="__codelineno-1-6"></a>Accept-Ranges: bytes
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a>Content-Length: 966
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>Content-Length: 927
 <a id="__codelineno-1-8" name="__codelineno-1-8"></a>Content-Type: application/json
 <a id="__codelineno-1-9" name="__codelineno-1-9"></a>
 <a id="__codelineno-1-10" name="__codelineno-1-10"></a>{
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a>    "dsn": "mysql:host=localhost;dbname=dbimpots-2019;charset=utf8mb4",
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a>    "id": "admimpots",
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a>    "pwd": "mdpimpots",
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a>    "tableTranches": "tbtranches",
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>    "dsn": "mysql:host=localhost;dbname=dbtaxes-2019;charset=utf8mb4",
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>    "id": "admtaxes",
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>    "pwd": "pwdtaxes",
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>    "tableBrackets": "tbbrackets",
 <a id="__codelineno-1-15" name="__codelineno-1-15"></a>    "colId": "id",
-<a id="__codelineno-1-16" name="__codelineno-1-16"></a>    "colLimites": "limites",
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>    "colLimits": "limits",
 <a id="__codelineno-1-17" name="__codelineno-1-17"></a>    "colCoeffR": "coeffr",
 <a id="__codelineno-1-18" name="__codelineno-1-18"></a>    "colCoeffN": "coeffn",
-<a id="__codelineno-1-19" name="__codelineno-1-19"></a>    "tableConstantes": "tbconstantes",
-<a id="__codelineno-1-20" name="__codelineno-1-20"></a>    "colPlafondQfDemiPart": "plafondQfDemiPart",
-<a id="__codelineno-1-21" name="__codelineno-1-21"></a>    "colPlafondRevenusCelibatairePourReduction": "plafondRevenusCelibatairePourReduction",
-<a id="__codelineno-1-22" name="__codelineno-1-22"></a>    "colPlafondRevenusCouplePourReduction": "plafondRevenusCouplePourReduction",
-<a id="__codelineno-1-23" name="__codelineno-1-23"></a>    "colValeurReducDemiPart": "valeurReducDemiPart",
-<a id="__codelineno-1-24" name="__codelineno-1-24"></a>    "colPlafondDecoteCelibataire": "plafondDecoteCelibataire",
-<a id="__codelineno-1-25" name="__codelineno-1-25"></a>    "colPlafondDecoteCouple": "plafondDecoteCouple",
-<a id="__codelineno-1-26" name="__codelineno-1-26"></a>    "colPlafondImpotCelibatairePourDecote": "plafondImpotCelibatairePourDecote",
-<a id="__codelineno-1-27" name="__codelineno-1-27"></a>    "colPlafondImpotCouplePourDecote": "plafondImpotCouplePourDecote",
-<a id="__codelineno-1-28" name="__codelineno-1-28"></a>    "colAbattementDixPourcentMax": "abattementDixPourcentMax",
-<a id="__codelineno-1-29" name="__codelineno-1-29"></a>    "colAbattementDixPourcentMin": "abattementDixPourcentMin"
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a>    "tableConstants": "tbconstants",
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a>    "colHalfShareQfCeiling": "halfShareQfCeiling",
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a>    "colSingleIncomeCeilingForReduction": "singleIncomeCeilingForReduction",
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a>    "colCoupleIncomeCeilingForReduction": "coupleIncomeCeilingForReduction",
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a>    "colHalfShareReductionValue": "halfShareReductionValue",
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a>    "colSingleDiscountCeiling": "singleDiscountCeiling",
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a>    "colCoupleDiscountCeiling": "coupleDiscountCeiling",
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a>    "colSingleTaxCeilingForDiscount": "singleTaxCeilingForDiscount",
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a>    "colCoupleTaxCeilingForDiscount": "coupleTaxCeilingForDiscount",
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a>    "colTenPercentAllowanceMax": "tenPercentAllowanceMax",
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a>    "colTenPercentAllowanceMin": "tenPercentAllowanceMin"
 <a id="__codelineno-1-30" name="__codelineno-1-30"></a>}
 </code></pre></div></td></tr></table></div>
-<p>Anyone can read the username and password for the <em>[dbimpots-2019]</em> database user. However, server versions 8 through 12 use this file or its equivalent.</p>
+<p>Anyone can read the username and password for the <em>[dbtaxes-2019]</em> database user. However, server versions 8 through 12 use this file or its equivalent.</p>
 <p>The correct approach is the opposite: block everything by default, then explicitly allow only what needs to be accessible from the outside. For our application, only three files need to be accessible:</p>
 <ul>
 <li><em>[main.php]</em>, the main controller, which receives all requests;</li>
@@ -1259,7 +1259,7 @@
 <li>the image <em>[logo.jpg]</em>, which the browser requests via a HTTP request when it displays the view banner.</li>
 </ul>
 <h2 id="242-the-new-directory-structure">24.2. <span style="color: #2e74b5">The new directory structure</span></h2>
-<p>We copy and paste the <em>[scripts-web/impots/version-12]</em> folder into <em>[scripts-web/impots/version-13]</em>, then reorganize its files:</p>
+<p>We copy and paste the <em>[scripts-web/tax/version-12] folder into [scripts-web/tax/version-13]</em>, then reorganize its files:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
@@ -1297,39 +1297,39 @@
 <span class="normal"><a href="#__codelineno-2-35">35</a></span>
 <span class="normal"><a href="#__codelineno-2-36">36</a></span>
 <span class="normal"><a href="#__codelineno-2-37">37</a></span>
-<span class="normal"><a href="#__codelineno-2-38">38</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>scripts-web/impots/version-13
+<span class="normal"><a href="#__codelineno-2-38">38</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>scripts-web/tax/version-13
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a>├── .htaccess
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a>├── Config
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a>│   ├── config.json
 <a id="__codelineno-2-5" name="__codelineno-2-5"></a>│   ├── database.json
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a>│   └── vhost-impots-v13.conf
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>│   └── vhost-tax-v13.conf
 <a id="__codelineno-2-7" name="__codelineno-2-7"></a>├── Controllers
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a>│   └── (les contrôleurs secondaires de la version 12)
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>│   └── (the secondary controllers of version 12)
 <a id="__codelineno-2-9" name="__codelineno-2-9"></a>├── Entities
 <a id="__codelineno-2-10" name="__codelineno-2-10"></a>│   ├── Action.php
 <a id="__codelineno-2-11" name="__codelineno-2-11"></a>│   ├── ControllerResult.php
 <a id="__codelineno-2-12" name="__codelineno-2-12"></a>│   ├── Database.php
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a>│   ├── ExceptionImpots.php
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a>│   ├── ResponseType.php
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a>│   ├── Simulation.php
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a>│   └── TaxAdminData.php
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>│   ├── ResponseType.php
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>│   ├── Simulation.php
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>│   ├── TaxAdminData.php
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>│   └── TaxException.php
 <a id="__codelineno-2-17" name="__codelineno-2-17"></a>├── Logs
 <a id="__codelineno-2-18" name="__codelineno-2-18"></a>│   └── logs.txt
 <a id="__codelineno-2-19" name="__codelineno-2-19"></a>├── Model
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a>│   ├── InterfaceServerDao.php
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a>│   ├── InterfaceServerMetier.php
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a>│   ├── ServerDao.php
-<a id="__codelineno-2-23" name="__codelineno-2-23"></a>│   ├── ServerDaoWithSession.php
-<a id="__codelineno-2-24" name="__codelineno-2-24"></a>│   └── ServerMetier.php
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>│   ├── InterfaceServerBusiness.php
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a>│   ├── InterfaceServerDao.php
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a>│   ├── ServerBusiness.php
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a>│   ├── ServerDao.php
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a>│   └── ServerDaoWithSession.php
 <a id="__codelineno-2-25" name="__codelineno-2-25"></a>├── Responses
-<a id="__codelineno-2-26" name="__codelineno-2-26"></a>│   └── (les classes des réponses de la version 12)
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a>│   └── (the response classes of version 12)
 <a id="__codelineno-2-27" name="__codelineno-2-27"></a>├── Utilities
 <a id="__codelineno-2-28" name="__codelineno-2-28"></a>│   ├── Logger.php
 <a id="__codelineno-2-29" name="__codelineno-2-29"></a>│   ├── SendAdminMail.php
-<a id="__codelineno-2-30" name="__codelineno-2-30"></a>│   ├── Utilitaires.php
-<a id="__codelineno-2-31" name="__codelineno-2-31"></a>│   └── XmlUtilitaires.php
+<a id="__codelineno-2-30" name="__codelineno-2-30"></a>│   ├── Utilities.php
+<a id="__codelineno-2-31" name="__codelineno-2-31"></a>│   └── XmlUtilities.php
 <a id="__codelineno-2-32" name="__codelineno-2-32"></a>├── Views
-<a id="__codelineno-2-33" name="__codelineno-2-33"></a>│   └── (les vues de la version 12, sans le logo)
+<a id="__codelineno-2-33" name="__codelineno-2-33"></a>│   └── (the views of version 12, without the logo)
 <a id="__codelineno-2-34" name="__codelineno-2-34"></a>└── public
 <a id="__codelineno-2-35" name="__codelineno-2-35"></a>    ├── Resources
 <a id="__codelineno-2-36" name="__codelineno-2-36"></a>    │   └── logo.jpg
@@ -1338,9 +1338,9 @@
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>into <em>[public]</em>, the only folder that will be accessible via the web. It contains the two scripts <em>[index.php, main.php]</em> and, in the <em>[Resources]</em> folder, the image <em>[logo.jpg]</em>. The name <em>[public]</em> is the one used by current PHP frameworks (Symfony, Laravel) for this same role;</li>
-<li>In <em>[Config]</em>, the configuration files: <em>[config.json]</em> (formerly <em>[Data/config.json]</em>) and <em>[database.json]</em>, and the database configuration that was taken from the <em>[Data]</em> folder in version 8. The file <em>[vhost-impots-v13.conf]</em> will be presented at the end of the chapter;</li>
+<li>In <em>[Config]</em>, the configuration files: <em>[config.json]</em> (formerly <em>[Data/config.json]</em>) and <em>[database.json]</em>, and the database configuration that was taken from the <em>[Data]</em> folder in version 8. The file <em>[vhost-tax-v13.conf]</em> will be presented at the end of the chapter;</li>
 <li>in <em>[Logs]</em>, the log file, which was in the <em>[Data]</em> folder;</li>
-<li>and in <em>[Model]</em>, the layer classes <em>[métier]</em> and <em>[dao]</em> from the server. Until now, they were loaded from the version 8 and 9 folders. They have now been copied to the version 13 folder, along with the features <em>[ExceptionImpots, TaxAdminData, Database]</em> (version 5) and the utilities <em>[Logger, SendAdminMail]</em> (version 9), <em>[XmlUtilitaires]</em> (version 11), and <em>[Utilitaires]</em> (version 5). The <em>[version-13]</em> folder thus contains the entire application: this is the only folder that would be copied to a production server, without relying on folders from other versions;</li>
+<li>and in <em>[Model]</em>, the layer classes <em>[business]</em> and <em>[dao]</em> from the server. Until now, they were loaded from the version 8 and 9 folders. They have now been copied to the version 13 folder, along with the features <em>[TaxException, TaxAdminData, Database]</em> (version 5) and the utilities <em>[Logger, SendAdminMail]</em> (version 9), <em>[XmlUtilities]</em> (version 11), and <em>[Utilities]</em> (version 5). The <em>[version-13]</em> folder thus contains the entire application: this is the only folder that would be copied to a production server, without relying on folders from other versions;</li>
 <li>the <em>[Tests]</em> folder from version 12, which contained the test pages for the views, is not included: these pages would no longer be accessible via the web anyway.</li>
 </ul>
 <p>The names of these files do not change, nor does their content, with three exceptions that we will now discuss. Only the Composer library <em>[vendor]</em> remains in its original location, at the root of the <em>[php8-oct-2026]</em> folder.</p>
@@ -1410,18 +1410,18 @@
 <span class="normal"><a href="#__codelineno-3-61">61</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">{</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="nt">"databaseFilename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Config/database.json"</span><span class="p">,</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">        </span><span class="s2">"Entities/ExceptionImpots.php"</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">        </span><span class="s2">"Entities/TaxException.php"</span><span class="p">,</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">        </span><span class="s2">"Entities/TaxAdminData.php"</span><span class="p">,</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">        </span><span class="s2">"Entities/Database.php"</span><span class="p">,</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">        </span><span class="s2">"Utilities/Utilitaires.php"</span><span class="p">,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">        </span><span class="s2">"Utilities/Utilities.php"</span><span class="p">,</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">        </span><span class="s2">"Model/InterfaceServerDao.php"</span><span class="p">,</span>
 <a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">        </span><span class="s2">"Model/ServerDao.php"</span><span class="p">,</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">        </span><span class="s2">"Model/ServerDaoWithSession.php"</span><span class="p">,</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">        </span><span class="s2">"Model/InterfaceServerMetier.php"</span><span class="p">,</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">        </span><span class="s2">"Model/ServerMetier.php"</span><span class="p">,</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">        </span><span class="s2">"Model/InterfaceServerBusiness.php"</span><span class="p">,</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">        </span><span class="s2">"Model/ServerBusiness.php"</span><span class="p">,</span>
 <a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">        </span><span class="s2">"Utilities/Logger.php"</span><span class="p">,</span>
 <a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">        </span><span class="s2">"Utilities/SendAdminMail.php"</span><span class="p">,</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">        </span><span class="s2">"Utilities/XmlUtilitaires.php"</span><span class="p">,</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">        </span><span class="s2">"Utilities/XmlUtilities.php"</span><span class="p">,</span>
 <a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">        </span><span class="s2">"Entities/Simulation.php"</span><span class="p">,</span>
 <a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">        </span><span class="s2">"Entities/ControllerResult.php"</span><span class="p">,</span>
 <a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">        </span><span class="s2">"Entities/Action.php"</span><span class="p">,</span>
@@ -1433,12 +1433,12 @@
 <a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">        </span><span class="s2">"Responses/HtmlResponse.php"</span><span class="p">,</span>
 <a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">        </span><span class="s2">"Controllers/InterfaceController.php"</span><span class="p">,</span>
 <a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="w">        </span><span class="s2">"Controllers/InitSessionController.php"</span><span class="p">,</span>
-<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">        </span><span class="s2">"Controllers/AuthentifierUtilisateurController.php"</span><span class="p">,</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="w">        </span><span class="s2">"Controllers/CalculerImpotController.php"</span><span class="p">,</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="w">        </span><span class="s2">"Controllers/ListerSimulationsController.php"</span><span class="p">,</span>
-<a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="w">        </span><span class="s2">"Controllers/SupprimerSimulationController.php"</span><span class="p">,</span>
-<a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">        </span><span class="s2">"Controllers/FinSessionController.php"</span><span class="p">,</span>
-<a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="w">        </span><span class="s2">"Controllers/AfficherCalculImpotController.php"</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">        </span><span class="s2">"Controllers/AuthenticateUserController.php"</span><span class="p">,</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="w">        </span><span class="s2">"Controllers/CalculateTaxController.php"</span><span class="p">,</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="w">        </span><span class="s2">"Controllers/ListSimulationsController.php"</span><span class="p">,</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="w">        </span><span class="s2">"Controllers/DeleteSimulationController.php"</span><span class="p">,</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">        </span><span class="s2">"Controllers/EndSessionController.php"</span><span class="p">,</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="w">        </span><span class="s2">"Controllers/DisplayTaxCalculationController.php"</span>
 <a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="w">    </span><span class="p">],</span>
 <a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="w">    </span><span class="nt">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="w">        </span><span class="p">{</span>
@@ -1451,7 +1451,7 @@
 <a id="__codelineno-3-42" name="__codelineno-3-42"></a><span class="w">        </span><span class="nt">"smtp-port"</span><span class="p">:</span><span class="w"> </span><span class="mi">1025</span><span class="p">,</span>
 <a id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="w">        </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"guest@localhost"</span><span class="p">,</span>
 <a id="__codelineno-3-44" name="__codelineno-3-44"></a><span class="w">        </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"guest@localhost"</span><span class="p">,</span>
-<a id="__codelineno-3-45" name="__codelineno-3-45"></a><span class="w">        </span><span class="nt">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plantage du serveur de calcul d'impôts"</span><span class="p">,</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45"></a><span class="w">        </span><span class="nt">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tax calculation server crash"</span><span class="p">,</span>
 <a id="__codelineno-3-46" name="__codelineno-3-46"></a><span class="w">        </span><span class="nt">"tls"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <a id="__codelineno-3-47" name="__codelineno-3-47"></a><span class="w">        </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
 <a id="__codelineno-3-48" name="__codelineno-3-48"></a><span class="w">    </span><span class="p">},</span>
@@ -1461,12 +1461,12 @@
 <a id="__codelineno-3-52" name="__codelineno-3-52"></a><span class="w">        </span><span class="nt">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span>
 <a id="__codelineno-3-53" name="__codelineno-3-53"></a><span class="w">        </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">6379</span>
 <a id="__codelineno-3-54" name="__codelineno-3-54"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-3-55" name="__codelineno-3-55"></a><span class="w">    </span><span class="nt">"vues"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-56" name="__codelineno-3-56"></a><span class="w">        </span><span class="nt">"vue-authentification.php"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">700</span><span class="p">,</span><span class="w"> </span><span class="mi">221</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">],</span>
-<a id="__codelineno-3-57" name="__codelineno-3-57"></a><span class="w">        </span><span class="nt">"vue-calcul-impot.php"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">341</span><span class="p">,</span><span class="w"> </span><span class="mi">350</span><span class="p">,</span><span class="w"> </span><span class="mi">800</span><span class="p">],</span>
-<a id="__codelineno-3-58" name="__codelineno-3-58"></a><span class="w">        </span><span class="nt">"vue-liste-simulations.php"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">600</span><span class="p">]</span>
+<a id="__codelineno-3-55" name="__codelineno-3-55"></a><span class="w">    </span><span class="nt">"views"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-56" name="__codelineno-3-56"></a><span class="w">        </span><span class="nt">"view-authentication.php"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">700</span><span class="p">,</span><span class="w"> </span><span class="mi">221</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">],</span>
+<a id="__codelineno-3-57" name="__codelineno-3-57"></a><span class="w">        </span><span class="nt">"view-tax-calculation.php"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">341</span><span class="p">,</span><span class="w"> </span><span class="mi">350</span><span class="p">,</span><span class="w"> </span><span class="mi">800</span><span class="p">],</span>
+<a id="__codelineno-3-58" name="__codelineno-3-58"></a><span class="w">        </span><span class="nt">"view-simulations-list.php"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">600</span><span class="p">]</span>
 <a id="__codelineno-3-59" name="__codelineno-3-59"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-3-60" name="__codelineno-3-60"></a><span class="w">    </span><span class="nt">"vue-erreurs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vue-erreurs.php"</span>
+<a id="__codelineno-3-60" name="__codelineno-3-60"></a><span class="w">    </span><span class="nt">"view-errors"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-errors.php"</span>
 <a id="__codelineno-3-61" name="__codelineno-3-61"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <ul>
@@ -1485,25 +1485,25 @@
 <span class="normal"><a href="#__codelineno-4-20">20</a></span>
 <span class="normal"><a href="#__codelineno-4-21">21</a></span>
 <span class="normal"><a href="#__codelineno-4-22">22</a></span>
-<span class="normal"><a href="#__codelineno-4-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="x">// Errors from PHP are not sent to the client (they go to the web server log)</span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="x">// PHP errors are not sent to the client (they go to the web server's log)</span>
 <a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="x">ini_set("display_errors", "0");</span>
 <a id="__codelineno-4-16" name="__codelineno-4-16"></a>
-<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="x">// the application root directory, parent of the [public] directory: the paths in the configuration file are relative to this directory</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="x">// the application's root folder, parent of the [public] folder: the paths of the configuration file are relative to this folder</span>
 <a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="x">const ROOT_DIRECTORY = __DIR__ . "/..";</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="x">// Configuration file path</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="x">// path of the configuration file</span>
 <a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="x">const CONFIG_FILENAME = ROOT_DIRECTORY . "/Config/config.json";</span>
 <a id="__codelineno-4-21" name="__codelineno-4-21"></a>
-<a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="x">// the Composer autoloader (Symfony, Predis)</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="x">// Composer's autoloader (Symfony, Predis)</span>
 <a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="x">require_once ROOT_DIRECTORY . "/../../../vendor/autoload.php";</span>
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>Line 18: The constant <em>[ROOT_DIRECTORY]</em> still refers to the application’s root folder, relative to which the paths in the <em>[config.json]</em> file are defined. Since the script is now in the <em>[public]</em> folder, this root folder is the parent folder of <strong><em>[__DIR__]</em></strong>. You cannot write <strong><em>[dirname(__DIR__)]</em></strong>: the value of a constant declared with <em>[const]</em> must be a constant expression, and a function call is not one. The concatenation of <strong><em>[__DIR__]</em></strong> (a constant) and a string is a constant expression;</li>
 <li>line 20: the new path to the configuration file;</li>
-<li>line 23: this line does not change: the path to the Composer loader is relative to the application’s root directory, which is always <em>[scripts-web/impots/version-13]</em>.</li>
+<li>line 23: this line does not change: the path to the Composer loader is relative to the application’s root directory, which is always <em>[scripts-web/tax/version-13]</em>.</li>
 </ul>
 <p>The script <em>[public/index.php]</em> is the one from version 12. Its redirection to the relative path URL via <em>[main.php?action=init-session&amp;type=html]</em> remains correct since <em>[index.php]</em> and <em>[main.php]</em> are in the same folder.</p>
 <h3 id="2433-the-views-banner">24.3.3. <span style="color: #1f4d78">The views banner</span></h3>
-<p>The views remain in the <em>[Views]</em> folder, outside the <em>[public]</em> folder: they are included by the <em>[HtmlResponse]</em> class with a disk path (<strong><em>[__DIR__ . &quot;/../Views/$vue&quot;]</em></strong>), and are not requested by the browser. Only the fragment <em>[v-bandeau.php]</em> changes, because the logo has been moved:</p>
+<p>The views remain in the <em>[Views]</em> folder, outside the <em>[public]</em> folder: they are included by the <em>[HtmlResponse]</em> class with a disk path (<strong><em>[__DIR__ . &quot;/../Views/$view&quot;]</em></strong>), and are not requested by the browser. Only the fragment <em>[v-banner.php]</em> changes, because the logo has been moved:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
@@ -1519,17 +1519,17 @@
 <span class="normal"><a href="#__codelineno-5-13">13</a></span>
 <span class="normal"><a href="#__codelineno-5-14">14</a></span>
 <span class="normal"><a href="#__codelineno-5-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="cp">&lt;?php</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="c1">// fragment: the header of all views</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c1">// template: [$modèle-&gt;logo] (optional) - the logo's URL, relative to the URL of the displayed page [public/main.php]</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="c1">// fragment: the top banner of all the views</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c1">// model: [$model-&gt;logo] (optional) - the URL of the logo, relative to the URL of the displayed page [public/main.php]</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="cp">?&gt;</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="x">&lt;!-- banner: a light gray frame with rounded corners --&gt;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="x">&lt;!-- banner: a light grey frame with rounded corners --&gt;</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="x">&lt;div class="p-4 my-4 bg-body-tertiary rounded-3"&gt;</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="x">    &lt;div class="row align-items-center"&gt;</span>
 <a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="x">        &lt;div class="col-md-4"&gt;</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="x">            &lt;img src="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$modèle</span><span class="o">-&gt;</span><span class="na">logo</span> <span class="o">??</span> <span class="s2">"Resources/logo.jpg"</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">" alt="Cerisier en fleurs"&gt;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="x">            &lt;img src="</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$model</span><span class="o">-&gt;</span><span class="na">logo</span> <span class="o">??</span> <span class="s2">"Resources/logo.jpg"</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">" alt="Cherry tree in bloom"&gt;</span>
 <a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="x">        &lt;/div&gt;</span>
 <a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="x">        &lt;div class="col-md-8"&gt;</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="x">            &lt;h1&gt;Calculez votre impôt&lt;/h1&gt;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="x">            &lt;h1&gt;Calculate your tax&lt;/h1&gt;</span>
 <a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="x">        &lt;/div&gt;</span>
 <a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="x">    &lt;/div&gt;</span>
 <a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="x">&lt;/div&gt;</span>
@@ -1552,26 +1552,26 @@
 <span class="normal"><a href="#__codelineno-6-11">11</a></span>
 <span class="normal"><a href="#__codelineno-6-12">12</a></span>
 <span class="normal"><a href="#__codelineno-6-13">13</a></span>
-<span class="normal"><a href="#__codelineno-6-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a># version 13: only the application's [public] folder is accessible via the web
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a># (Apache 2.4—the [mod_rewrite] module must be enabled, which is the case with Laragon)
+<span class="normal"><a href="#__codelineno-6-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a># version 13: only the application's [public] folder is accessible from the web
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a># (Apache 2.4 - the [mod_rewrite] module must be active, which is the case with Laragon)
 <a id="__codelineno-6-3" name="__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4"></a># no list of folder contents
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a># no listing of the folders' content
 <a id="__codelineno-6-5" name="__codelineno-6-5"></a>Options -Indexes
 <a id="__codelineno-6-6" name="__codelineno-6-6"></a>
-<a id="__codelineno-6-7" name="__codelineno-6-7"></a># rewriting of URL: patterns are compared to the path of the URL relative to the [version-13] folder
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a># URL rewriting: the patterns are compared with the URL path relative to the [version-13] folder
 <a id="__codelineno-6-8" name="__codelineno-6-8"></a>RewriteEngine On
-<a id="__codelineno-6-9" name="__codelineno-6-9"></a># The URL file in the application folder [.../version-13/] is redirected to the folder [public]
-<a id="__codelineno-6-10" name="__codelineno-6-10"></a># %1: the path of the requested URL, without the trailing /, captured by the condition [RewriteCond]
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a># the URL of the application's folder [.../version-13/] is redirected to the [public] folder
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a># %1: the path of the requested URL, without the final /, captured by the [RewriteCond] condition
 <a id="__codelineno-6-11" name="__codelineno-6-11"></a>RewriteCond %{REQUEST_URI} ^(.*)/$
 <a id="__codelineno-6-12" name="__codelineno-6-12"></a>RewriteRule ^$ %1/public/ [R=302,L]
-<a id="__codelineno-6-13" name="__codelineno-6-13"></a># Any other URL that does not refer to the [public] directory or one of its files is denied (403 Forbidden)
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a># any other URL that does not designate the [public] folder or one of its files is refused (403 Forbidden)
 <a id="__codelineno-6-14" name="__codelineno-6-14"></a>RewriteRule !^public(/|$) - [F]
 </code></pre></div></td></tr></table></div>
 <p>Comments</p>
 <ul>
 <li>Line 5: When a URL specifies a folder that does not have a default document (<em>[index.php]</em>, <em>[index.html]</em>), <em>[Apache]</em> can display the list of files in the folder. The <strong><em>[Options -Indexes]</em></strong> directive prevents this;</li>
-<li>Line 8: We use the <em>[mod_rewrite]</em> module from <em>[Apache]</em>, the rewriting module for URL, which is enabled by default in <em>[Laragon]</em>. A <em>[RewriteRule]</em> rule has the form <strong><em>[RewriteRule motif substitution [options]]</em></strong>. In a <em>[.htaccess]</em> file, the pattern—a regular expression—is compared to the path of the requested URL relative to the directory of the <em>[.htaccess]</em> file. For URL and <em>[http://localhost/php8-oct-2026/scripts-web/impots/version-13/Config/config.json]</em>, this path is <em>[Config/config.json]</em>;</li>
-<li>Lines 11–12: The first rule processes the URL file from the <em>[.../version-13/]</em> application folder, whose relative path is empty (reason: <strong><em>[^$]</em></strong>). It redirects the browser (option <strong><em>[R=302]</em></strong>) to the <em>[public]</em> folder and stops processing the rules (option <strong><em>[L]</em></strong>, for “last”). The substitution must be a complete URL path: it is obtained from the variable <em>[REQUEST_URI]</em> of <em>[Apache]</em>, the path of the requested URL <em>[/php8-oct-2026/scripts-web/impots/version-13/]</em>. The condition <em>[RewriteCond]</em> preceding the rule compares this variable to the regular expression <strong><em>[^(.*)/$]</em></strong>: the portion in parentheses—the path without the trailing /—is then available in the rule under the name <strong><em>[%1]</em></strong>. Thus, the file <em>[.htaccess]</em> does not depend on the application’s location in the <em>[www]</em> folder;</li>
+<li>Line 8: We use the <em>[mod_rewrite]</em> module from <em>[Apache]</em>, the rewriting module for URL, which is enabled by default in <em>[Laragon]</em>. A <em>[RewriteRule]</em> rule has the form <strong><em>[RewriteRule pattern substitution [options]]</em></strong>. In a <em>[.htaccess]</em> file, the pattern—a regular expression—is compared to the path of the requested URL relative to the directory of the <em>[.htaccess]</em> file. For URL and <em>[http://localhost/php8-oct-2026/scripts-web/tax/version-13/Config/config.json]</em>, this path is <em>[Config/config.json]</em>;</li>
+<li>Lines 11–12: The first rule processes the URL file from the <em>[.../version-13/]</em> application folder, whose relative path is empty (pattern: [^$]). It redirects the browser (option <strong><em>[R=302]</em></strong>) to the <em>[public]</em> folder and stops processing the rules (option <strong><em>[L]</em></strong>, for “last”). The substitution must be a complete URL path: it is obtained from the variable <em>[REQUEST_URI]</em> of <em>[Apache]</em>, the path of the requested URL <em>[/php8-oct-2026/scripts-web/tax/version-13/]</em>. The condition <em>[RewriteCond]</em> preceding the rule compares this variable to the regular expression <strong><em>[^(.*)/$]</em></strong>: the portion in parentheses—the path without the trailing /—is then available in the rule under the name <strong><em>[%1]</em></strong>. Thus, the file <em>[.htaccess]</em> does not depend on the application’s location in the <em>[www]</em> folder;</li>
 <li>Line 14: The second rule applies to any URL whose relative path does not begin with <em>[public/]</em> and is not exactly <em>[public]</em>: this is the meaning of the <strong><em>[!]</em></strong> placed before the pattern. The substitution <strong><em>[-]</em></strong> means “no substitution,” and the option <strong><em>[F]</em></strong> (for “forbidden”) causes <em>[Apache]</em> to be mapped to the code <em>[403 Forbidden]</em>. The URL <em>[.../version-13/public]</em>, without the trailing /, must remain allowed: <em>[Apache]</em> (module <em>[mod_dir]</em>) responds to it with a redirect to <em>[.../version-13/public/]</em>.</li>
 </ul>
 <p>This file also blocks access to itself: it is not located in the <em>[public]</em> folder. Since the path to a URL is normalized to <em>[Apache]</em> before the rules are applied, a URL—like <em>a [.../version-13/public/../Config/config.json]—</em>is also denied.</p>
@@ -1597,22 +1597,22 @@
 <span class="normal"><a href="#__codelineno-7-11">11</a></span>
 <span class="normal"><a href="#__codelineno-7-12">12</a></span>
 <span class="normal"><a href="#__codelineno-7-13">13</a></span>
-<span class="normal"><a href="#__codelineno-7-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>&gt; curl -I http://localhost/php8-oct-2026/scripts-web/impots/version-13/Config/config.json
+<span class="normal"><a href="#__codelineno-7-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>&gt; curl -I http://localhost/php8-oct-2026/scripts-web/tax/version-13/Config/config.json
 <a id="__codelineno-7-2" name="__codelineno-7-2"></a>HTTP/1.1 403 Forbidden
 <a id="__codelineno-7-3" name="__codelineno-7-3"></a>Server: Apache/2.4.58
 <a id="__codelineno-7-4" name="__codelineno-7-4"></a>Content-Type: text/html; charset=iso-8859-1
 <a id="__codelineno-7-5" name="__codelineno-7-5"></a>
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a>&gt; curl -I http://localhost/php8-oct-2026/scripts-web/impots/version-13/Views/vue-calcul-impot.php
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>&gt; curl -I http://localhost/php8-oct-2026/scripts-web/tax/version-13/Views/view-tax-calculation.php
 <a id="__codelineno-7-7" name="__codelineno-7-7"></a>HTTP/1.1 403 Forbidden
 <a id="__codelineno-7-8" name="__codelineno-7-8"></a>Server: Apache/2.4.58
 <a id="__codelineno-7-9" name="__codelineno-7-9"></a>Content-Type: text/html; charset=iso-8859-1
 <a id="__codelineno-7-10" name="__codelineno-7-10"></a>
-<a id="__codelineno-7-11" name="__codelineno-7-11"></a>&gt; curl -I http://localhost/php8-oct-2026/web-scripts/taxes/version-13/Logs/logs.txt
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a>&gt; curl -I http://localhost/php8-oct-2026/scripts-web/tax/version-13/Logs/logs.txt
 <a id="__codelineno-7-12" name="__codelineno-7-12"></a>HTTP/1.1 403 Forbidden
 <a id="__codelineno-7-13" name="__codelineno-7-13"></a>Server: Apache/2.4.58
 <a id="__codelineno-7-14" name="__codelineno-7-14"></a>Content-Type: text/html; charset=iso-8859-1
 </code></pre></div></td></tr></table></div>
-<p>The code <em>[403 Forbidden]</em> corresponds to the second rule. Note that the view <em>[vue-calcul-impot.php]</em> was not even executed. The files in the folder <em>[public]</em> are served:</p>
+<p>The code <em>[403 Forbidden]</em> corresponds to the second rule. Note that the view <em>[view-tax-calculation.php]</em> was not even executed. The files in the folder <em>[public]</em> are served:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
@@ -1632,7 +1632,7 @@
 <span class="normal"><a href="#__codelineno-8-17">17</a></span>
 <span class="normal"><a href="#__codelineno-8-18">18</a></span>
 <span class="normal"><a href="#__codelineno-8-19">19</a></span>
-<span class="normal"><a href="#__codelineno-8-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>&gt; curl -i "http://localhost/php8-oct-2026/scripts-web/impots/version-13/public/main.php?action=init-session&amp;type=json"
+<span class="normal"><a href="#__codelineno-8-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>&gt; curl -i "http://localhost/php8-oct-2026/scripts-web/tax/version-13/public/main.php?action=init-session&amp;type=json"
 <a id="__codelineno-8-2" name="__codelineno-8-2"></a>HTTP/1.0 200 OK
 <a id="__codelineno-8-3" name="__codelineno-8-3"></a>Server: Apache/2.4.58
 <a id="__codelineno-8-4" name="__codelineno-8-4"></a>X-Powered-By: PHP/8.5.11
@@ -1642,9 +1642,9 @@
 <a id="__codelineno-8-8" name="__codelineno-8-8"></a>Connection: close
 <a id="__codelineno-8-9" name="__codelineno-8-9"></a>Content-Type: application/json; charset=utf-8
 <a id="__codelineno-8-10" name="__codelineno-8-10"></a>
-<a id="__codelineno-8-11" name="__codelineno-8-11"></a>{"action":"init-session","état":700,"réponse":"session démarrée avec type [json]"}
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a>{"action":"init-session","status":700,"response":"session started with type [json]"}
 <a id="__codelineno-8-12" name="__codelineno-8-12"></a>
-<a id="__codelineno-8-13" name="__codelineno-8-13"></a>&gt; curl -I http://localhost/php8-oct-2026/web-scripts/taxes/version-13/public/Resources/logo.jpg
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a>&gt; curl -I http://localhost/php8-oct-2026/scripts-web/tax/version-13/public/Resources/logo.jpg
 <a id="__codelineno-8-14" name="__codelineno-8-14"></a>HTTP/1.1 200 OK
 <a id="__codelineno-8-15" name="__codelineno-8-15"></a>Server: Apache/2.4.58
 <a id="__codelineno-8-16" name="__codelineno-8-16"></a>Last-Modified: Thu, 01 Oct 2026 16:39:23 GMT
@@ -1669,13 +1669,13 @@
 <span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-9-10">10</a></span>
 <span class="normal"><a href="#__codelineno-9-11">11</a></span>
-<span class="normal"><a href="#__codelineno-9-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>&gt; curl -I http://localhost/php8-oct-2026/web-scripts/taxes/version-13/
+<span class="normal"><a href="#__codelineno-9-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>&gt; curl -I http://localhost/php8-oct-2026/scripts-web/tax/version-13/
 <a id="__codelineno-9-2" name="__codelineno-9-2"></a>HTTP/1.1 302 Found
 <a id="__codelineno-9-3" name="__codelineno-9-3"></a>Server: Apache/2.4.58
-<a id="__codelineno-9-4" name="__codelineno-9-4"></a>Location: http://localhost/php8-oct-2026/web-scripts/taxes/version-13/public/
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>Location: http://localhost/php8-oct-2026/scripts-web/tax/version-13/public/
 <a id="__codelineno-9-5" name="__codelineno-9-5"></a>Content-Type: text/html; charset=iso-8859-1
 <a id="__codelineno-9-6" name="__codelineno-9-6"></a>
-<a id="__codelineno-9-7" name="__codelineno-9-7"></a>&gt; curl -I http://localhost/php8-oct-2026/web-scripts/taxes/version-13/public/
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a>&gt; curl -I http://localhost/php8-oct-2026/scripts-web/tax/version-13/public/
 <a id="__codelineno-9-8" name="__codelineno-9-8"></a>HTTP/1.1 302 Found
 <a id="__codelineno-9-9" name="__codelineno-9-9"></a>Server: Apache/2.4.58
 <a id="__codelineno-9-10" name="__codelineno-9-10"></a>X-Powered-By: PHP/8.5.11
@@ -1686,14 +1686,14 @@
 <li>Line 4: the redirection of the first rule in the <em>[.htaccess]</em> file;</li>
 <li>line 11: the redirection from the script <em>[public/index.php]</em>.</li>
 </ul>
-<p>In a browser, the URL that launches the HTML application becomes <em>[http://localhost/php8-oct-2026/scripts-web/impots/version-13/]</em>. After the two redirects, the authentication page appears, along with its logo:</p>
+<p>In a browser, the URL that launches the HTML application becomes <em>[http://localhost/php8-oct-2026/scripts-web/tax/version-13/]</em>. After the two redirects, the authentication page appears, along with its logo:</p>
 <p><img src="images/1000000000000500000001F41DA037C6.png" width="529" height="207" style="width:14cm;height:5.47cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000500000001F41DA037C6.png" /></p>
 <p>The application works the same as the one in version 12. Here is the tax calculation screen after a simulation:</p>
 <p><img src="images/1000000000000500000002BC2D233DD6.png" width="529" height="289" style="width:14cm;height:7.655cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000500000002BC2D233DD6.png" /></p>
 <p>The URL client requests for JSON and XML have changed: the primary controller is now <em>[.../version-13/public/main.php]</em>. To use the JSON client from version 12 with the version 13 server, simply change the <em>[urlServer]</em> key in its configuration file.</p>
 <h2 id="245-in-production-the-document-root-is-the-public-folder">24.5. <span style="color: #4f81bd"><span style="color: #2e74b5">In production: the document root is the </span><em>[public]</em><span style="color: #2e74b5"> folder</span></span></h2>
 <p>The <em>[.htaccess]</em> file is a solution adapted from <em>[Laragon]</em>, where a single folder, <em>[www]</em>, contains multiple applications. On a production server, the approach is different: the <em>[public]</em> folder is made the document root for the site. The rest of the application is then outside the website’s directory structure: no URL can access it, and no rules are necessary. This is the organization recommended by the PHP frameworks.</p>
-<p>With <em>[Apache]</em>, you define a virtual host, c.-à-d, for this purpose—an additional website served by the same server, <em>[Apache]</em>. The file <em>[Config/vhost-impots-v13.conf]</em> provides an example:</p>
+<p>With <em>[Apache]</em>, you define a virtual host, i.e., for this purpose—an additional website served by the same server, <em>[Apache]</em>. The file <em>[Config/vhost-tax-v13.conf]</em> provides an example:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
@@ -1707,15 +1707,15 @@
 <span class="normal"><a href="#__codelineno-10-11">11</a></span>
 <span class="normal"><a href="#__codelineno-10-12">12</a></span>
 <span class="normal"><a href="#__codelineno-10-13">13</a></span>
-<span class="normal"><a href="#__codelineno-10-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a># an Apache virtual host whose document root is the [public] folder in version 13
-<a id="__codelineno-10-2" name="__codelineno-10-2"></a># to be placed in the [&lt;laragon&gt;/etc/apache2/sites-enabled] folder (paths to be adjusted)
-<a id="__codelineno-10-3" name="__codelineno-10-3"></a># The application is then accessible at URL [http://localhost:8013/]
+<span class="normal"><a href="#__codelineno-10-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a># an Apache virtual host whose document root is the [public] folder of version 13
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a># to be placed in the [&lt;laragon&gt;/etc/apache2/sites-enabled] folder (paths to be adapted)
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a># the application is then accessible at the URL [http://localhost:8013/]
 <a id="__codelineno-10-4" name="__codelineno-10-4"></a>Listen 8013
 <a id="__codelineno-10-5" name="__codelineno-10-5"></a>&lt;VirtualHost *:8013&gt;
-<a id="__codelineno-10-6" name="__codelineno-10-6"></a>     # the document root: only the contents of [public] are accessible via the web
-<a id="__codelineno-10-7" name="__codelineno-10-7"></a>    DocumentRoot "C:/laragon/www/php8-oct-2026/scripts-web/impots/version-13/public"
-<a id="__codelineno-10-8" name="__codelineno-10-8"></a>    &lt;Directory "C:/laragon/www/php8-oct-2026/scripts-web/impots/version-13/public"&gt;
-<a id="__codelineno-10-9" name="__codelineno-10-9"></a>         # No [.htaccess] file to read: the configuration is here
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>    # the document root: only the content of [public] is accessible from the web
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a>    DocumentRoot "C:/laragon/www/php8-oct-2026/scripts-web/tax/version-13/public"
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a>    &lt;Directory "C:/laragon/www/php8-oct-2026/scripts-web/tax/version-13/public"&gt;
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a>        # no [.htaccess] file to read: the configuration is here
 <a id="__codelineno-10-10" name="__codelineno-10-10"></a>        AllowOverride None
 <a id="__codelineno-10-11" name="__codelineno-10-11"></a>        Options -Indexes
 <a id="__codelineno-10-12" name="__codelineno-10-12"></a>        Require all granted
@@ -1723,7 +1723,7 @@
 <a id="__codelineno-10-14" name="__codelineno-10-14"></a>&lt;/VirtualHost&gt;
 </code></pre></div></td></tr></table></div>
 <ul>
-<li>Line 4: <em>[Apache]</em> also listens on port 8013. A virtual host can be distinguished from others by its port, as shown here, or by its name (<em>[impots.test],</em> for example). Using the port avoids having to declare a new hostname;</li>
+<li>Line 4: <em>[Apache]</em> also listens on port 8013. A virtual host can be distinguished from others by its port, as shown here, or by its name (<em>[tax.test],</em> for example). Using the port avoids having to declare a new hostname;</li>
 <li>Lines 5–14: The configuration of the virtual host that responds to requests received on port 8013;</li>
 <li>line 7: The document root for this site is the <em>[public]</em> folder in version 13. URL and <em>[http://localhost:8013/main.php]</em> therefore refer to the file <em>[public/main.php]</em>;</li>
 <li>Lines 8–13: Access rights to the <em>[public]</em> folder. <strong><em>[AllowOverride None]</em></strong> tells <em>[Apache]</em> that it does not need to search for <em>[.htaccess]</em> files: the entire configuration is here, which is also faster.</li>
@@ -1759,7 +1759,7 @@
 <a id="__codelineno-11-6" name="__codelineno-11-6"></a>Content-Type: text/html; charset=UTF-8
 <a id="__codelineno-11-7" name="__codelineno-11-7"></a>
 <a id="__codelineno-11-8" name="__codelineno-11-8"></a>&gt; curl "http://localhost:8013/main.php?action=init-session&amp;type=json"
-<a id="__codelineno-11-9" name="__codelineno-11-9"></a>{"action":"init-session","état":700,"réponse":"session démarrée avec type [json]"}
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a>{"action":"init-session","status":700,"response":"session started with type [json]"}
 <a id="__codelineno-11-10" name="__codelineno-11-10"></a>
 <a id="__codelineno-11-11" name="__codelineno-11-11"></a>&gt; curl -I http://localhost:8013/Resources/logo.jpg
 <a id="__codelineno-11-12" name="__codelineno-11-12"></a>HTTP/1.1 200 OK

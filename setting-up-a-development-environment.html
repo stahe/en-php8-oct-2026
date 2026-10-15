@@ -721,14 +721,14 @@
   
   
     <li class="md-nav__item">
-      <a href="using-sgbd-and-mysql.html" class="md-nav__link">
+      <a href="using-the-mysql-dbms.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    12. Using SGBD and MySQL
+    12. Using the MySQL DBMS
   
 
     
@@ -1112,16 +1112,16 @@
 <h1 id="2-setting-up-a-development-environment">2. <span style="color: #2e74b5">Setting Up a Development Environment</span></h1>
 <p>The scripts were written and tested in the following environment:</p>
 <ul>
-<li>a <em>[Apache]</em> / SGBD <em>[MySQL]</em> / <em>[PHP]</em> 8.5 web server environment called <em>[Laragon]</em>;</li>
+<li>an [Apache] / [MySQL] DBMS / [PHP] 8.5 web server environment called <em>[Laragon]</em>;</li>
 <li>the <em>[Visual Studio Code]</em> editor and its extension <em>[PHP Intelephense]</em>;</li>
 <li>the dependency manager <em>[Composer]</em>, provided with <em>[Laragon]</em>, which installs the PHP libraries used by the course.</li>
 </ul>
-<p>Other tools (the mail server <em>[Mailpit]</em>, SGBD, <em>[PostgreSQL]</em>, and the server <em>[Redis]</em>) are only relevant to certain chapters: their installation is described in the relevant chapters.</p>
+<p>Other tools (the mail server <em>[Mailpit]</em>, the [PostgreSQL] DBMS and the server <em>[Redis]</em>) are only relevant to certain chapters: their installation is described in the relevant chapters.</p>
 <h2 id="21-installing-laragon">2.1. <span style="color: #2e74b5">Installing Laragon</span></h2>
 <p><em>[Laragon]</em> is a package for <em>[Windows]</em> that combines several software components:</p>
 <ul>
 <li>a web server (<em>[Apache]</em>). We will use it to write web scripts in PHP;</li>
-<li>SGBD and <em>[MySQL]</em> (<em>[PostgreSQL]</em> can be added to this, see the chapter on version 6);</li>
+<li>the [MySQL] DBMS ([PostgreSQL] can be added to this, see the chapter on version 6);</li>
 <li>the PHP scripting language, in several versions, including version 8.5;</li>
 <li>a <em>[Redis]</em> server that implements a cache for web applications;</li>
 <li>the <em>[Composer]</em> tool;</li>
@@ -1134,15 +1134,15 @@
 <span class="normal"><a href="#__codelineno-0-4">4</a></span>
 <span class="normal"><a href="#__codelineno-0-5">5</a></span>
 <span class="normal"><a href="#__codelineno-0-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>C:\laragon
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>├── bin\        les logiciels : apache, mysql, php, redis, composer…
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>├── data\       les données des SGBD
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>├── etc\        des fichiers de configuration
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>├── bin\        the software: apache, mysql, php, redis, composer…
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>├── data\       the DBMS data
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>├── etc\        configuration files
 <a id="__codelineno-0-5" name="__codelineno-0-5"></a>├── tmp\
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a>└── www\        la racine du serveur web Apache : http://localhost
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>└── www\        the root of the Apache web server: http://localhost
 </code></pre></div></td></tr></table></div>
 <p>Launching <em>[Laragon]</em> displays its main window:</p>
 <ul>
-<li>The <em>[Démarrer tout]</em> (Start All) button starts the <em>[Apache]</em> web server, as well as SGBD and <em>[MySQL]</em>. The window then indicates, for each of them, that it is active and on which port it is listening: 80 for <em>[Apache]</em>, 3306 for <em>[MySQL]</em>;</li>
+<li>The <em>[Démarrer tout]</em> (Start All) button starts the <em>[Apache]</em> web server, as well as the [MySQL] DBMS. The window then indicates, for each of them, that it is active and on which port it is listening: 80 for <em>[Apache]</em>, 3306 for <em>[MySQL]</em>;</li>
 <li>the <em>[Web]</em> button displays the <em>[http://localhost]</em> page, which corresponds to the <em>[&lt;laragon&gt;/www]</em> folder;</li>
 <li>the <em>[Base de données]</em> (Database) button launches a database administration tool (<em>[HeidiSQL]</em>, included with <em>[Laragon]</em>);</li>
 <li>The <em>[Terminal]</em> button opens a command terminal in which <em>[php]</em>, <em>[composer]</em>, [mysql]… can be used directly;</li>
@@ -1151,7 +1151,7 @@
 </ul>
 <h3 id="211-select-php-85">2.1.1. <span style="color: #1f4d78">Select PHP 8.5</span></h3>
 <p><em>[Laragon]</em> may contain multiple versions of PHP. The version to use is selected from its menu under the <em>[PHP &gt; Version]</em> section. Select version 8.5 (the most recent in the 8.5 series). It will then be used by both the <em>[Apache]</em> server and the <em>[php]</em> terminal command.</p>
-<p>In order for the <em>[php]</em> command to also be usable in <em>[VS Code]</em> terminals, the PHP folder must be located within the PATH folder of <em>[Windows]</em>. <em>[Laragon]</em> handles this: <em>[Outils &gt; Path &gt; Ajouter Laragon au Path]</em> menu (Tools &gt; Path &gt; Add Laragon to Path). Then open a new terminal (terminals that are already open will not see the change) and type:</p>
+<p>In order for the <em>[php]</em> command to also be usable in <em>[VS Code]</em> terminals, the PHP folder must be located within the PATH folder of <em>[Windows]</em>. <em>[Laragon]</em> handles this: <em>[Tools &gt; Path &gt; Add Laragon to Path] menu</em>. Then open a new terminal (terminals that are already open will not see the change) and type:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>&gt; php -v
 </code></pre></div></td></tr></table></div>
 <p>The command should display the version of PHP, 8.5.x.</p>
@@ -1176,19 +1176,19 @@
 <li><em>[error_log]</em>: the log file. Without this line, a console script writes its log to the terminal itself, and each message would appear there twice (once preceded by <em>[PHP]</em>, once without it);</li>
 <li><em>[date.timezone]</em>: the time zone used by date functions.</li>
 </ul>
-<p>The course also uses several extensions of PHP. They are enabled in the <em>[Laragon]</em> menu, under the <em>[PHP &gt; Extensions]</em> section, or in the <em>[php.ini]</em> file using lines of the form <strong><em>[extension=nom]</em></strong>. The extensions used are: <em>[curl]</em>, <em>[mbstring]</em>, <em>[openssl]</em>, <em>[pdo_mysql]</em>, <em>[pdo_pgsql]</em>, <em>[fileinfo]</em>, and <em>[zip]</em> (the latter is used by <em>[Composer]</em> to decompress the libraries it downloads). After modifying the <em>[php.ini]</em> file, you must restart <em>[Apache]</em> (the <em>[Recharger]</em> button in <em>[Laragon]</em>); the console scripts, on the other hand, re-read the <em>[php.ini]</em> file each time they run.</p>
+<p>The course also uses several extensions of PHP. They are enabled in the <em>[Laragon]</em> menu, under the <em>[PHP &gt; Extensions]</em> section, or in the <em>[php.ini]</em> file using lines of the form <strong><em>[extension=name]</em></strong>. The extensions used are: <em>[curl]</em>, <em>[mbstring]</em>, <em>[openssl]</em>, <em>[pdo_mysql]</em>, <em>[pdo_pgsql]</em>, <em>[fileinfo]</em>, and <em>[zip]</em> (the latter is used by <em>[Composer]</em> to decompress the libraries it downloads). After modifying the <em>[php.ini]</em> file, you must restart <em>[Apache]</em> (the [Reload] button in [Laragon]); the console scripts, on the other hand, re-read the <em>[php.ini]</em> file each time they run.</p>
 <p>You can verify the configuration in a terminal using the command <strong><em>[php --ini]</em></strong> (the <em>[php.ini]</em> file used) and <strong><em>[php -m]</em></strong> (the list of loaded extensions). The first script in the next chapter, <em>[phpinfo.php]</em>, displays the entire configuration.</p>
 <h2 id="22-installing-vs-code">2.2. <span style="color: #2e74b5">Installing VS Code</span></h2>
-<p><em>[Visual Studio Code]</em> is a free editor from Microsoft, available for download at<a href="https://code.visualstudio.com/"><u><span style="color: #0563c1"> https://code.visualstudio.com/</span></u></a>. Here, it replaces the IDE and <em>[NetBeans]</em> used in Course PHP 7.</p>
+<p><em>[Visual Studio Code]</em> is a free editor from Microsoft, available for download at<a href="https://code.visualstudio.com/"><u><span style="color: #0563c1"> https://code.visualstudio.com/</span></u></a>. Here, it replaces the [NetBeans] IDE used in the PHP 7 course.</p>
 <p>Once <em>[VS Code]</em> is installed, add support for the PHP language: in the <em>[Extensions]</em> panel (Ctrl+Shift+X), search for and install the <em>[PHP Intelephense]</em> extension. It provides:</p>
 <ul>
 <li>code completion: PHP functions, classes, their methods, and their attributes are suggested as you type;</li>
 <li>display of documentation for a function or method when you hover over its name;</li>
-<li>error detection as you type (undefined variables, incorrect types, nonexistent methods, etc.), which are underlined in the code and listed in the <em>[Problèmes]</em> panel;</li>
+<li>error detection as you type (undefined variables, incorrect types, nonexistent methods, etc.), which are underlined in the code and listed in the <em>[Problems] panel</em>;</li>
 <li>code navigation: pressing Ctrl+click on a class or function name opens its definition, including those in the libraries within the <em>[vendor]</em> folder.</li>
 </ul>
 <p><em>[Intelephense]</em> must know the version of PHP being used to identify its new features: in the <em>[VS Code]</em> settings (Ctrl+comma), search for “intelephense php version” and enter 8.5.</p>
-<p>Next, open the course code folder in <em>[VS Code]</em> (<em>[Fichier &gt; Ouvrir le dossier]</em> menu). A terminal opens via the <em>[Terminal &gt; Nouveau terminal]</em> menu: it is set to the open folder, and you type the commands <em>[php]</em>, <em>[composer]</em>, [curl]… To run a console script, navigate to its folder (command <strong><em>[cd]</em></strong>) and type <strong><em>[php nom-du-script.php]</em></strong>.</p>
+<p>Next, open the course code folder in <em>[VS Code]</em> (<em>[File &gt; Open Folder]</em> menu). A terminal opens via the <em>[Terminal &gt; New Terminal]</em> menu: it is set to the open folder, and you type the commands <em>[php]</em>, <em>[composer]</em>, [curl]… To run a console script, navigate to its folder (command <strong><em>[cd]</em></strong>) and type <strong><em>[php script-name.php]</em></strong>.</p>
 <h2 id="23-installing-the-course-code">2.3. <span style="color: #2e74b5">Installing the Course Code</span></h2>
 <p>The course code files are contained in a folder named <em>[php8-oct-2026]</em>, which can be downloaded at the beginning of this document. Place it in the <em>[&lt;laragon&gt;/www]</em> folder:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
@@ -1203,7 +1203,7 @@
 <a id="__codelineno-3-5" name="__codelineno-3-5"></a>    ├── scripts-console
 <a id="__codelineno-3-6" name="__codelineno-3-6"></a>    └── scripts-web
 </code></pre></div></td></tr></table></div>
-<p>Its web scripts are then accessible at URL and <em>[http://localhost/php8-oct-2026/...]</em>. For example, once <em>[Apache]</em> is launched, URL and <em>[http://localhost/php8-oct-2026/composer.json]</em> should display the file <em>[composer.json]</em>.</p>
+<p>Its web scripts are then accessible at URLs [http://localhost/php8-oct-2026/...]. For example, once <em>[Apache]</em> is launched, the URL [http://localhost/php8-oct-2026/composer.json] should display the file <em>[composer.json]</em>.</p>
 <h2 id="24-installing-libraries-with-composer">2.4. <span style="color: #2e74b5">Installing Libraries with Composer</span></h2>
 <p>Like most programming languages, PHP has a dependency manager, <em>[Composer]</em>, which downloads the libraries a project needs from the <em>[packagist.org]</em> repository. The libraries used by the course are declared in the <em>[composer.json]</em> file in the <em>[php8-oct-2026]</em> folder:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
@@ -1228,7 +1228,7 @@
 <span class="normal"><a href="#__codelineno-4-20">20</a></span>
 <span class="normal"><a href="#__codelineno-4-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="p">{</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stahe/php8-oct-2026"</span><span class="p">,</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Codes du cours « Introduction au langage PHP 8 par l'exemple » (octobre 2026)"</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Code of the course \"Introduction to the PHP 8 language by example\" (October 2026)"</span><span class="p">,</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project"</span><span class="p">,</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">    </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span><span class="nt">"require"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1249,7 +1249,7 @@
 <a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <ul>
-<li>Line 6: the libraries required to run the scripts. Each is identified by a name in the form <em>[éditeur/bibliothèque]</em> and a version constraint: <strong><em>[^8.0]</em></strong> means “any version of 8.x starting with 8.0.” Their roles are described in the chapters that use them;</li>
+<li>Line 6: the libraries required to run the scripts. Each is identified by a name in the form <em>[vendor/library]</em> and a version constraint: <strong><em>[^8.0]</em></strong> means “any version of 8.x starting with 8.0.” Their roles are described in the chapters that use them;</li>
 <li>line 7: the project requires PHP 8.5 or later;</li>
 <li>line 15: libraries used solely for development, in this case the <em>[PHPUnit]</em> testing framework.</li>
 </ul>
